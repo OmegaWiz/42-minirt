@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:14:16 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/04/17 17:42:18 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:39:19 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int	zoom(int button, int x, int y, void *param)
 
 int	do_none(void *data)
 {
+	(void) data;
 	return (0);
 }

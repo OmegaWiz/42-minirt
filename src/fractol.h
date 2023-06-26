@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:02:41 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/04/18 08:57:59 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:39:00 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <math.h>
 
-# include "../mlx/mlx.h"
+# include "../lib/mlx/mlx.h"
 # include "../lib/libft/libft.h"
 
 # ifndef WIN_WIDTH

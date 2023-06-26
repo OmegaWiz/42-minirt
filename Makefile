@@ -6,50 +6,73 @@
 #    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 08:16:18 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/04/17 19:12:49 by kkaiyawo         ###   ########.fr        #
+#    Updated: 2023/06/26 12:48:49 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	fractol
+### EXECUTABLE ###
+NAME			=	miniRT
 
-SRCS			=	fractol.c hook.c draw.c
-
+### DIRECRTORIES ###
 SRC_DIR			=	./src/
 LIB_DIR			=	./lib/
 BUILD_DIR		=	./build/
-MLX_DIR			=	./
+LIBFT_DIR		=	${LIB_DIR}libft
+MLX_DIR			=	${LIB_DIR}mlx
 
-SRC				=	${addprefix ${BUILD_DIR},${SRCS}}
-OBJ				=	${SRC:.c=.o}
+### FILES ###
+SRC_FILE		=	fractol.c hook.c draw.c
 
+### LIBRARIES ###
+LIBFT_AR			=	${LIBFT_DIR}/libft.a
+MLX_AR				=	${MLX_DIR}/libmlx.a
+LIB_AR				=	${LIBFT_AR} ${MLX_AR}
+
+### PATH ###
+SRC				=	${addprefix ${BUILD_DIR},${SRC_FILE}}
+
+### OBJECTS ###
+SRC_OBJ			=	${SRC:.c=.o}
+BONUS_OBJ		=	${BONUS:.c=.o}
+
+### COMPILATION ###
 CC				=	gcc
 CFLAG			=	-g -Wall -Wextra -Werror -O3
+MLX_LIB			=	-lm -framework OpenGL -framework AppKit
+MLX_INCL		=	-Imlx
+RM				=	rm -f
 
-all:			library ${BUILD_DIR} ${NAME}
+all:			${LIB_AR} ${BUILD_DIR} ${NAME}
 
-library:
-					find ${LIB_DIR} -mindepth 1 -maxdepth 1 -exec make bonus -C {} \;
-					find ${MLX_DIR} -mindepth 1 -maxdepth 1 -exec make -C {} \;
+${LIBFT_AR}:
+					find ${LIBFT_DIR} -maxdepth 0 -exec make bonus -C {} \;
 
-clean:
-					rm -f ${OBJ}
-					find ${LIB_DIR} -mindepth 1 -maxdepth 1 -exec make cleanb -C {} \;
-					find ${MLX_DIR} -mindepth 1 -maxdepth 1 -exec make clean -C {} \;
+${MLX_AR}:
+					find ${MLX_DIR} -maxdepth 0 -exec make -C {} \;
 
+cleanlib:
+					find ${LIBFT_DIR} -maxdepth 0 -exec make cleanb -C {} \;
+					find ${MLX_DIR} -maxdepth 0 -exec make clean -C {} \;
 
-fclean:			clean
-					rm -f ${NAME}
-					find ${LIB_DIR} -mindepth 1 -maxdepth 1 -exec make fcleanb -C {} \;
+fcleanlib:
+					find ${LIBFT_DIR} -maxdepth 0 -exec make fcleanb -C {} \;
+					find ${MLX_DIR} -maxdepth 0 -exec make clean -C {} \;
 
-re:				fclean all
+${NAME}:		${SRC_OBJ}
+					${CC} ${CFLAG} ${MLX_LIB} ${SRC_OBJ} ${LIB_AR} -o ${NAME}
 
 ${BUILD_DIR}:
 					mkdir -p ${BUILD_DIR}
 
 ${BUILD_DIR}%.o:${SRC_DIR}%.c
-					${CC} -Imlx -c -o $@ $^
+					${CC} ${CFLAG} ${MLX_INCL} -c -o $@ $^
 
-${NAME}:		${OBJ}
-					${CC} ${OBJ} -Lmlx -lmlx -lm -framework OpenGL -framework AppKit ${wildcard ${LIB_DIR}*/*.a} -o ${NAME} ${CFLAG}
+clean:			cleanlib
+					${RM} ${SRC_OBJ}
+
+fclean:			clean fcleanlib
+					${RM} ${NAME}
+
+re:				fclean all
 
 .PHONY:			all library clean fclean re
