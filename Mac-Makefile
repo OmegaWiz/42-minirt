@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Mac-Makefile                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: moonegg <moonegg@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 08:16:18 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/07/03 16:29:45 by moonegg          ###   ########.fr        #
+#    Updated: 2023/07/03 16:20:54 by moonegg          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC_DIR			=	./src/
 LIB_DIR			=	./lib/
 BUILD_DIR		=	./build/
 LIBFT_DIR		=	${LIB_DIR}libft
-MLX_DIR			=	${LIB_DIR}minilibx-linux
+MLX_DIR			=	${LIB_DIR}mlx
 
 ### FILES ###
 SRC_FILE		=	miniRT.c hook.c\
@@ -26,7 +26,7 @@ SRC_FILE		=	miniRT.c hook.c\
 
 ### LIBRARIES ###
 LIBFT_AR			=	${LIBFT_DIR}/libft.a
-MLX_AR				=	${MLX_DIR}/libmlx_Linux.a
+MLX_AR				=	${MLX_DIR}/libmlx.a
 LIB_AR				=	${LIBFT_AR} ${MLX_AR}
 
 ### PATH ###
@@ -39,8 +39,8 @@ BONUS_OBJ		=	${BONUS:.c=.o}
 ### COMPILATION ###
 CC				=	gcc
 CFLAG			=	-g -Wall -Wextra -Werror -O3
-MLX_LIB			=	-lm -lmlx -lXext -lX11 -L${MLX_DIR}
-MLX_INCL		=	-I${MLX_DIR} -I${LIBFT_DIR}
+MLX_LIB			=	-lm -framework OpenGL -framework AppKit
+MLX_INCL		=	-Imlx
 RM				=	rm -f
 
 all:			${LIB_AR} ${BUILD_DIR} ${NAME}

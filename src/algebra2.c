@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   algebra2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moonegg <moonegg@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 17:14:16 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/03 16:12:10 by moonegg          ###   ########.fr       */
+/*   Created: 2023/07/03 14:00:16 by moonegg           #+#    #+#             */
+/*   Updated: 2023/07/03 14:02:06 by moonegg          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "algebra.h"
 
-int	close_x(void *param)
+double	vec3_dot(t_vec3 a, t_vec3 b)
 {
-	t_vars	*vars;
-
-	vars = (t_vars *) param;
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
-int	key_hook(int keycode, void *param)
+double	vec3_length(t_vec3 a)
 {
-	t_vars	*vars;
-
-	vars = (t_vars *) param;
-	if (keycode == 53)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	return (0);
+	return (sqrt(vec3_dot(a, a)));
 }
 
-int	do_none(void *data)
+t_vec3	vec3_normalize(t_vec3 a)
 {
-	(void) data;
-	return (0);
+	return (vec3_scale(a, 1 / vec3_length(a)));
+}
+
+t_vec3	vec3_neg(t_vec3 a)
+{
+	return (vec3_scale(a, -1));
+}
+
+t_vec3	vec3_abs(t_vec3 a)
+{
+	return (vec3(fabs(a.x), fabs(a.y), fabs(a.z)));
 }

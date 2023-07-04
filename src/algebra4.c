@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   algebra4.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moonegg <moonegg@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 17:14:16 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/03 16:12:10 by moonegg          ###   ########.fr       */
+/*   Created: 2023/07/03 14:03:18 by moonegg           #+#    #+#             */
+/*   Updated: 2023/07/03 14:06:16 by moonegg          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "algebra.h"
 
-int	close_x(void *param)
+t_point	vec3_to_point(t_vec3 a)
 {
-	t_vars	*vars;
-
-	vars = (t_vars *) param;
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
+	return (point(a.x, a.y, a.z));
 }
 
-int	key_hook(int keycode, void *param)
+t_vec3	point_to_vec3(t_point a)
 {
-	t_vars	*vars;
-
-	vars = (t_vars *) param;
-	if (keycode == 53)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	return (0);
+	return (vec3(a.x, a.y, a.z));
 }
 
-int	do_none(void *data)
+t_vec3	point_sub(t_point a, t_point b)
 {
-	(void) data;
-	return (0);
+	return (vec3(a.x - b.x, a.y - b.y, a.z - b.z));
 }

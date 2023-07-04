@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   algebra3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moonegg <moonegg@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 17:14:16 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/03 16:12:10 by moonegg          ###   ########.fr       */
+/*   Created: 2023/07/03 14:02:20 by moonegg           #+#    #+#             */
+/*   Updated: 2023/07/03 14:03:11 by moonegg          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "algebra.h"
 
-int	close_x(void *param)
+t_point	point(double x, double y, double z)
 {
-	t_vars	*vars;
+	t_point	point;
 
-	vars = (t_vars *) param;
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
+	point.x = x;
+	point.y = y;
+	point.z = z;
+	return (point);
 }
 
-int	key_hook(int keycode, void *param)
+t_point	point_add(t_point a, t_point b)
 {
-	t_vars	*vars;
-
-	vars = (t_vars *) param;
-	if (keycode == 53)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	return (0);
+	return (point(a.x + b.x, a.y + b.y, a.z + b.z));
 }
 
-int	do_none(void *data)
+t_point	point_neg(t_point a)
 {
-	(void) data;
-	return (0);
+	return (point(-a.x, -a.y, -a.z));
 }
+
+t_point	point_abs(t_point a)
+{
+	return (point(fabs(a.x), fabs(a.y), fabs(a.z)));
+}
+
