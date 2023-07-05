@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:47:21 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 16:16:02 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:40:16 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ int	raytrace(t_vec2 p, t_vars *vars)
 	hit_obj = raycast(p, vars, &hit_ray);
 	if (hit_obj == NULL) // hit no object
 		return (0); //for initial tests, there is no color ambience, return black
-	if (hit_obj->type == SPHERE)
-		return (color2int(255, 0, 0)); //return the color of the object hit
-	else
-		return (color2int(0, 255, 0));
+	return (get_color(hit_obj));
 }
 
 t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray)
@@ -79,7 +76,7 @@ t_ray	get_ray(t_vec2 p, t_vars *vars)
 	float x_angle = ((p.x / (float) WIN_WIDTH) * half_fov * 2) - half_fov;
 	float y_angle = ((p.y / (float) WIN_HEIGHT) * half_fov * 2) - half_fov;
 	float x_deviation = tanf(x_angle);
-	float y_deviation = tanf(y_angle);
+	float y_deviation = -tanf(y_angle);
 	// printf("%f %f %f %f %f\n", half_fov, x_angle, y_angle, x_deviation, y_deviation);
 	ray.direction.x = x_deviation * vars->cam_plane.width / 2.0f;
 	ray.direction.y = y_deviation * vars->cam_plane.height / 2.0f;
@@ -92,4 +89,19 @@ float	distance(t_point p1, t_point p2)
 {
 	return (sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2)
 			+ pow(p1.z - p2.z, 2)));
+}
+
+int	get_color(t_obj *obj)
+{
+	if (obj->type == SPHERE)
+	{
+		t_sphere *sphere = (t_sphere *) obj->obj;
+		return (sphere->color);
+	}
+	else if (obj->type == PLANE)
+	{
+		t_plane *plane = (t_plane *) obj->obj;
+		return (plane->color);
+	}
+	return (0);
 }

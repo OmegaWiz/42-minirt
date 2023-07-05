@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 14:38:03 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:05:06 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 # include <stdbool.h>
 
 # ifndef WIN_WIDTH
-#  define WIN_WIDTH 500
+#  define WIN_WIDTH 3840
 # endif
 
 # ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 500
+#  define WIN_HEIGHT 2160
 # endif
 
 typedef struct s_data {
@@ -64,6 +64,19 @@ typedef struct s_camera_plane
 	t_point	top_left;
 }	t_camera_plane;
 
+typedef struct s_ambient
+{
+	float	ratio;
+	int		color;
+}	t_ambient;
+
+typedef strcut s_light
+{
+	t_point	origin;
+	float	ratio;
+	int		color;
+}	t_light;
+
 typedef struct s_sphere
 {
 	t_point	center;
@@ -75,12 +88,23 @@ typedef struct s_plane
 {
 	t_point	center;
 	t_vec3	normal;
+	int		color;
 }	t_plane;
+
+typedef struct s_cylinder
+{
+	t_point	center;
+	t_vec3	normal;
+	float	radius;
+	float	height;
+	int		color;
+}	t_cylinder;
 
 typedef enum e_obj_type
 {
 	SPHERE,
 	PLANE,
+	CYLINDER,
 }	t_obj_type;
 
 typedef struct s_obj
@@ -96,6 +120,8 @@ typedef struct s_vars {
 	t_camera		camera;
 	t_camera_plane	cam_plane;
 	t_list			*obj_list;
+	t_list			*light_list;
+	t_list			*ambient_list;
 }	t_vars;
 
 // file.c
@@ -120,6 +146,7 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray);
 bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);
 t_ray	get_ray(t_vec2 p, t_vars *vars);
 float	distance(t_point p1, t_point p2);
+int		get_color(t_obj *obj);
 
 // intersect.c
 bool	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2);
