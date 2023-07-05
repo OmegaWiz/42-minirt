@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:04:20 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 16:14:45 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:02:31 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ bool		intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2)
 	if (root1 > root2) {
 		root1 = root2;
 	}
-	(void) ray2;
+	ray2->origin = point_add(ray1->origin, vec3_to_point(vec3_scale(ray1->direction, root1)));
+	ray2->direction = vec3_normalize(point_sub(ray2->origin, sphere->center));
 	return true;
 }
 

@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 19:06:01 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:23:07 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 # include <stdbool.h>
 
 # ifndef WIN_WIDTH
-#  define WIN_WIDTH 3840
+#  define WIN_WIDTH 1920
 # endif
 
 # ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 2160
+#  define WIN_HEIGHT 1080
 # endif
 
 typedef struct s_data {
@@ -70,10 +70,10 @@ typedef struct s_ambient
 	int		color;
 }	t_ambient;
 
-typedef strcut s_light
+typedef struct s_light
 {
 	t_point	origin;
-	float	ratio;
+	float	brightness;
 	int		color;
 }	t_light;
 
@@ -146,7 +146,6 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray);
 bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);
 t_ray	get_ray(t_vec2 p, t_vars *vars);
 float	distance(t_point p1, t_point p2);
-int		get_color(t_obj *obj);
 
 // intersect.c
 bool	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2);
@@ -154,5 +153,9 @@ bool	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
 
 // color.c
 int		color2int(int r, int g, int b);
+int		get_color(t_obj *obj);
+
+// light.c
+bool	is_visible(t_ray ray, t_vars *vars);
 
 #endif

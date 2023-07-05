@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:50:18 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 18:18:54 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:56:35 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int	parse_file(int fd, t_vars *vars)
 	vars->camera.direction = vec3(0, 0, 1);
 	vars->camera.fov = 90;
 	cam_init(vars);
+
+	vars->light.origin = point(0, 100, 0);
+	vars->light.color = color2int(255, 255, 255);
+	vars->light.brightness = 0.5;
 
 	vars->obj_list = NULL;
 

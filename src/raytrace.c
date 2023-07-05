@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:47:21 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 18:40:16 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:38:38 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	raytrace(t_vec2 p, t_vars *vars)
 	hit_obj = raycast(p, vars, &hit_ray);
 	if (hit_obj == NULL) // hit no object
 		return (0); //for initial tests, there is no color ambience, return black
+	// if (is_visible(hit_ray, vars) == false)
+	// 	return (0);
 	return (get_color(hit_obj));
 }
 
@@ -32,21 +34,17 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray)
 	t_obj	*hit_obj;
 	float	min_dist;
 
-	// printf("raycasting at pixel %.0f %.0f\n", p.x, p.y);
 	ray1 = get_ray(p, vars);
 	min_dist = INFINITY;
 	hit_obj = NULL;
 	lst = vars->obj_list;
 	while (lst)
 	{
-		// t_obj *ptr = (t_obj *) (lst->content);
-		// printf("raycasting at object %u\n", ptr->type);
 		if (is_intersect((t_obj *) (lst->content), &ray1, &ray2) == true)
 		{
-			// printf("distance: %f\n", distance(vars->camera.origin, hit_ray->origin));
-			if (distance(vars->camera.origin, hit_ray->origin) < min_dist)
+			if (distance(vars->camera.origin, ray2.origin) < min_dist)
 			{
-				min_dist = distance(vars->camera.origin, hit_ray->origin);
+				min_dist = distance(vars->camera.origin, ray2.origin);
 				hit_obj = (t_obj *) (lst->content);
 				*hit_ray = ray2;
 			}
@@ -89,19 +87,4 @@ float	distance(t_point p1, t_point p2)
 {
 	return (sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2)
 			+ pow(p1.z - p2.z, 2)));
-}
-
-int	get_color(t_obj *obj)
-{
-	if (obj->type == SPHERE)
-	{
-		t_sphere *sphere = (t_sphere *) obj->obj;
-		return (sphere->color);
-	}
-	else if (obj->type == PLANE)
-	{
-		t_plane *plane = (t_plane *) obj->obj;
-		return (plane->color);
-	}
-	return (0);
 }
