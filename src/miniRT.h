@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 19:05:06 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:06:01 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ typedef struct s_vars {
 	t_data			img;
 	t_camera		camera;
 	t_camera_plane	cam_plane;
+	t_light			light;
+	t_ambient		ambient;
 	t_list			*obj_list;
-	t_list			*light_list;
-	t_list			*ambient_list;
 }	t_vars;
 
 // file.c
