@@ -6,13 +6,13 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:40:25 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 08:40:46 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 08:49:48 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	init(t_vars *vars)
+void	win_init(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");

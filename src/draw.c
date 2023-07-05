@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:40:55 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 08:41:14 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 08:47:04 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	draw(t_vars *vars)
 		p.y = 0;
 		while (p.y < WIN_HEIGHT)
 		{
+			color = raytrace(p, vars);
 			my_mlx_pixel_put(&(vars->img), p, color);
 			p.y++;
 		}

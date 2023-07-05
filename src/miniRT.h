@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 08:44:53 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 09:07:55 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,40 @@ typedef struct s_sphere
 	float	radius;
 }	t_sphere;
 
+typedef struct s_plane
+{
+	t_point	center;
+	t_vec3	normal;
+}	t_plane;
+
+typedef enum e_obj_type
+{
+	SPHERE,
+	PLANE,
+}	t_obj_type;
+
+typedef struct s_obj
+{
+	t_obj_type	type;
+	void		*obj;
+}	t_obj;
+
 typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-	t_data	img;
+	void			*mlx;
+	void			*win;
+	t_data			img;
+	t_camera		camera;
+	t_camera_plane	cam_plane;
+	t_list			*obj_list;
 }	t_vars;
 
+// file.c
+int		file_init(t_vars *vars, char *file);
+int		parse_file(int fd, t_vars *vars);
+int		cam_init(t_vars *vars);
+
 // init.c
-void	init(t_vars *vars);
+void	win_init(t_vars *vars);
 
 // hook.c
 int		close_x(void *param);
@@ -85,5 +111,8 @@ int		do_none(void *data);
 
 // draw.c
 void	draw(t_vars *vars);
+
+// raytrace.c
+int		raytrace(t_vec2 pixel, t_vars *vars);
 
 #endif
