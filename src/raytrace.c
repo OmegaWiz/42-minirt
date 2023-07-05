@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:47:21 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 20:38:38 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 21:06:31 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	raytrace(t_vec2 p, t_vars *vars)
 	hit_obj = raycast(p, vars, &hit_ray);
 	if (hit_obj == NULL) // hit no object
 		return (0); //for initial tests, there is no color ambience, return black
-	// if (is_visible(hit_ray, vars) == false)
-	// 	return (0);
+	if (is_shadow(hit_ray, vars) == true)
+		return (0);
 	return (get_color(hit_obj));
 }
 

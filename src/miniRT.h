@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 20:23:07 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:58:42 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,6 @@ int		color2int(int r, int g, int b);
 int		get_color(t_obj *obj);
 
 // light.c
-bool	is_visible(t_ray ray, t_vars *vars);
+bool	is_shadow(t_ray hit_ray, t_vars *vars);
 
 #endif

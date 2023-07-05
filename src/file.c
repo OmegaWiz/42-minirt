@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:50:18 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 19:56:35 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 21:03:04 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_file(int fd, t_vars *vars)
 	vars->camera.fov = 90;
 	cam_init(vars);
 
-	vars->light.origin = point(0, 100, 0);
+	vars->light.origin = point(0, 100, 50);
 	vars->light.color = color2int(255, 255, 255);
 	vars->light.brightness = 0.5;
 
@@ -56,7 +56,7 @@ int	parse_file(int fd, t_vars *vars)
 	ft_lstadd_back(&vars->obj_list, ft_lstnew(obj));
 
 	sphere = malloc(sizeof(t_sphere));
-	sphere->center = point(15, 5, 30);
+	sphere->center = point(15, 5, 50);
 	sphere->radius = 5;
 	sphere->color = color2int(0, 255, 0);
 	obj = malloc(sizeof(t_obj));
