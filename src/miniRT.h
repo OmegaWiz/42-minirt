@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 08:18:16 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 08:44:53 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,15 @@ typedef struct s_vars {
 	t_data	img;
 }	t_vars;
 
-int	close_x(void *param);
-int	key_hook(int keycode, void *param);
-int	do_none(void *data);
+// init.c
+void	init(t_vars *vars);
+
+// hook.c
+int		close_x(void *param);
+int		key_hook(int keycode, void *param);
+int		do_none(void *data);
+
+// draw.c
+void	draw(t_vars *vars);
 
 #endif

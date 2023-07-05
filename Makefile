@@ -6,7 +6,7 @@
 #    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 08:16:18 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/07/05 08:32:22 by kkaiyawo         ###   ########.fr        #
+#    Updated: 2023/07/05 08:43:53 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,9 @@ LIBFT_DIR		=	${LIB_DIR}libft
 MLX_DIR			=	${LIB_DIR}mlx
 
 ### FILES ###
-SRC_FILE		=	miniRT.c hook.c\
+SRC_FILE		=	miniRT.c hook.c init.c draw.c\
 					algebra1.c algebra2.c algebra3.c algebra4.c
-HEADER_FILE		=	miniRT.h
+HEADER_FILE		=	miniRT.h algebra.h
 
 ### LIBRARIES ###
 LIBFT_AR			=	${LIBFT_DIR}/libft.a
@@ -67,7 +67,7 @@ ${BUILD_DIR}:
 					mkdir -p ${BUILD_DIR}
 
 ${BUILD_DIR}%.o:${SRC_DIR}%.c
-					${CC} ${CFLAG} ${MLX_INCL} -I${HEADER_FILE} -c -o $@ $^
+					${CC} ${CFLAG} ${MLX_INCL} -I${SRC_DIR} -c -o $@ $^
 
 clean:			cleanlib
 					${RM} ${SRC_OBJ}
