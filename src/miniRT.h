@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moonegg <moonegg@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/03 16:26:41 by moonegg          ###   ########.fr       */
+/*   Updated: 2023/07/05 08:18:16 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define MINIRT_H
 
 # include "algebra.h"
-// # include "../lib/mlx/mlx.h"
-# include "../lib/minilibx-linux/mlx.h"
+# include "../lib/mlx/mlx.h"
+// # include "../lib/minilibx-linux/mlx.h"
 # include "../lib/libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -24,11 +24,11 @@
 # include <fcntl.h>
 
 # ifndef WIN_WIDTH
-#  define WIN_WIDTH 500
+#  define WIN_WIDTH 1000
 # endif
 
 # ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 500
+#  define WIN_HEIGHT 1000
 # endif
 
 typedef struct s_data {
