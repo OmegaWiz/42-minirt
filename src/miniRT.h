@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 09:07:55 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:38:03 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # ifndef WIN_WIDTH
-#  define WIN_WIDTH 1000
+#  define WIN_WIDTH 500
 # endif
 
 # ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 1000
+#  define WIN_HEIGHT 500
 # endif
 
 typedef struct s_data {
@@ -67,6 +68,7 @@ typedef struct s_sphere
 {
 	t_point	center;
 	float	radius;
+	int		color;
 }	t_sphere;
 
 typedef struct s_plane
@@ -114,5 +116,16 @@ void	draw(t_vars *vars);
 
 // raytrace.c
 int		raytrace(t_vec2 pixel, t_vars *vars);
+t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray);
+bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);
+t_ray	get_ray(t_vec2 p, t_vars *vars);
+float	distance(t_point p1, t_point p2);
+
+// intersect.c
+bool	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2);
+bool	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
+
+// color.c
+int		color2int(int r, int g, int b);
 
 #endif
