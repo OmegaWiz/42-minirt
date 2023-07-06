@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:04:20 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 10:34:28 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:42:25 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2)
 {
 	if (obj->type == SPHERE)
 		return (intersect_sphere(obj, ray1, ray2));
+	else if (obj->type == CYLINDER)
+		return (intersect_cylinder(obj, ray1, ray2));
 	else if (obj->type == PLANE)
 		return (intersect_plane(obj, ray1, ray2));
 	return (false);
@@ -74,4 +76,42 @@ bool		intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2)
 		}
 	}
 	return (false);
+}
+
+bool	intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2)
+{
+	t_cylinder	*cylinder;
+	t_vec3		oc;
+	float		a;
+	float		b;
+	float		c;
+	float		discriminant;
+	float		root1;
+	float		root2;
+	float		t;
+	t_vec3		tmp;
+
+	cylinder = (t_cylinder *) obj->obj;
+	oc = point_sub(ray1->origin, cylinder->center);
+	a = vec3_dot(ray1->direction, ray1->direction) - pow(vec3_dot(ray1->direction, cylinder->normal), 2);
+	b = 2 * (vec3_dot(ray1->direction, oc) - vec3_dot(ray1->direction, cylinder->normal) * vec3_dot(oc, cylinder->normal));
+	c = vec3_dot(oc, oc) - pow(vec3_dot(oc, cylinder->normal), 2) - pow(cylinder->radius, 2);
+	discriminant = b * b - 4 * a * c;
+	if (discriminant < 0)
+		return (false);
+	root1 = (-b - sqrt(discriminant)) / (2 * a);
+	root2 = (-b + sqrt(discriminant)) / (2 * a);
+	if (root1 < 0 && root2 < 0)
+		return (false);
+	if (root1 < 0)
+		root1 = root2;
+	if (root2 < 0)
+		root2 = root1;
+	if (root1 > root2)
+		root1 = root2;
+	t = root1;
+	ray2->origin = point_add(ray1->origin, vec3_to_point(vec3_scale(ray1->direction, t)));
+	tmp = point_sub(ray2->origin, cylinder->center);
+	ray2->direction = vec3_normalize(vec3_sub(tmp, vec3_scale(cylinder->normal, vec3_dot(tmp, cylinder->normal))));
+	return (true);
 }

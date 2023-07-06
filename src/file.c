@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:50:18 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 12:20:23 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:50:50 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	parse_file(int fd, t_vars *vars)
 {
 	t_sphere	*sphere;
 	t_plane		*plane;
+	t_cylinder	*cylinder;
 	t_obj		*obj;
 
 	(void) fd;
@@ -40,14 +41,14 @@ int	parse_file(int fd, t_vars *vars)
 	vars->camera.fov = 90;
 	cam_init(vars);
 
-	vars->light.origin = point(0, 20, 0);
+	vars->light.origin = point(10, 20, 0);
 	vars->light.color = color2int(255, 255, 255);
-	vars->light.brightness = 0.5;
+	vars->light.brightness = 1;
 
 	vars->obj_list = NULL;
 
 	sphere = malloc(sizeof(t_sphere));
-	sphere->center = point(-10, 10, 50);
+	sphere->center = point(-5, 10, 50);
 	sphere->radius = 10;
 	sphere->color = color2int(255, 0, 0);
 	obj = malloc(sizeof(t_obj));
@@ -64,13 +65,24 @@ int	parse_file(int fd, t_vars *vars)
 	obj->obj = sphere;
 	ft_lstadd_back(&vars->obj_list, ft_lstnew(obj));
 
-	// sphere = malloc(sizeof(t_sphere));
-	// sphere->center = point(0, -30, 50);
-	// sphere->radius = 15;
-	// sphere->color = color2int(0, 220, 220);
-	// obj = malloc(sizeof(t_obj));
-	// obj->type = SPHERE;
-	// obj->obj = sphere;
+	sphere = malloc(sizeof(t_sphere));
+	sphere->center = point(17.5, 5, 50);
+	sphere->radius = 5;
+	sphere->color = color2int(255, 0, 0);
+	obj = malloc(sizeof(t_obj));
+	obj->type = SPHERE;
+	obj->obj = sphere;
+	ft_lstadd_back(&vars->obj_list, ft_lstnew(obj));
+
+	cylinder = malloc(sizeof(t_cylinder));
+	cylinder->center = point(-20, 0, 30);
+	cylinder->normal = vec3(0, 1, 0);
+	cylinder->radius = 5;
+	cylinder->height = 5;
+	cylinder->color = color2int(0, 255, 0);
+	obj = malloc(sizeof(t_obj));
+	obj->type = CYLINDER;
+	obj->obj = cylinder;
 	// ft_lstadd_back(&vars->obj_list, ft_lstnew(obj));
 
 	plane = malloc(sizeof(t_plane));

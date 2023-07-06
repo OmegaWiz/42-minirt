@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/06 12:19:02 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:45:35 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 # include <stdbool.h>
 
 # ifndef WIN_WIDTH
-#  define WIN_WIDTH 500
+#  define WIN_WIDTH 1080
 # endif
 
 # ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 500
+#  define WIN_HEIGHT 720
 # endif
 
 typedef struct s_data {
@@ -103,8 +103,8 @@ typedef struct s_cylinder
 typedef enum e_obj_type
 {
 	SPHERE,
-	PLANE,
 	CYLINDER,
+	PLANE,
 }	t_obj_type;
 
 typedef struct s_obj
@@ -151,6 +151,7 @@ t_ray	get_ray(t_vec2 p, t_vars *vars);
 bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);
 bool	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2);
 bool	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
+bool	intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2);
 
 // color.c
 int		color2int(int r, int g, int b);
