@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algebra3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moonegg <moonegg@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:02:20 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/03 14:03:11 by moonegg          ###   ########.fr       */
+/*   Updated: 2023/07/06 10:26:37 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,7 @@ t_point	point_abs(t_point a)
 	return (point(fabs(a.x), fabs(a.y), fabs(a.z)));
 }
 
+double	point_length(t_point a, t_point b)
+{
+	return (sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2)));
+}

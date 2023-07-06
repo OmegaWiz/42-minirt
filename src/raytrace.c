@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:47:21 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 09:51:17 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 10:34:24 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,6 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray)
 		lst = lst->next;
 	}
 	return (hit_obj);
-}
-
-bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2)
-{
-	if (obj->type == SPHERE)
-		return (intersect_sphere(obj, ray1, ray2));
-	else if (obj->type == PLANE)
-		return (intersect_plane(obj, ray1, ray2));
-	return (false);
 }
 
 t_ray	get_ray(t_vec2 p, t_vars *vars)

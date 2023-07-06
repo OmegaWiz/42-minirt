@@ -6,13 +6,22 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:04:20 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 20:02:31 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 10:34:28 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool		intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2)
+bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2)
+{
+	if (obj->type == SPHERE)
+		return (intersect_sphere(obj, ray1, ray2));
+	else if (obj->type == PLANE)
+		return (intersect_plane(obj, ray1, ray2));
+	return (false);
+}
+
+bool	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2)
 {
 	t_sphere *sphere;
 

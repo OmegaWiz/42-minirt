@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algebra.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moonegg <moonegg@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:01:24 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/03 14:06:22 by moonegg          ###   ########.fr       */
+/*   Updated: 2023/07/06 11:06:18 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ t_point	point(double x, double y, double z);
 t_point	point_add(t_point a, t_point b);
 t_point	point_neg(t_point a);
 t_point	point_abs(t_point a);
+double	point_length(t_point a, t_point b);
+t_point	point_translate(t_point a, t_vec3 b, double t);
 
 t_point	vec3_to_point(t_vec3 a);
 t_vec3	point_to_vec3(t_point a);

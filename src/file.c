@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:50:18 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 09:49:34 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 11:17:08 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_file(int fd, t_vars *vars)
 	vars->camera.fov = 90;
 	cam_init(vars);
 
-	vars->light.origin = point(0, 100, 0);
+	vars->light.origin = point(30, 100, 0);
 	vars->light.color = color2int(255, 255, 255);
 	vars->light.brightness = 0.5;
 
@@ -64,8 +64,17 @@ int	parse_file(int fd, t_vars *vars)
 	obj->obj = sphere;
 	ft_lstadd_back(&vars->obj_list, ft_lstnew(obj));
 
+	// sphere = malloc(sizeof(t_sphere));
+	// sphere->center = point(0, -30, 50);
+	// sphere->radius = 15;
+	// sphere->color = color2int(0, 220, 220);
+	// obj = malloc(sizeof(t_obj));
+	// obj->type = SPHERE;
+	// obj->obj = sphere;
+	// ft_lstadd_back(&vars->obj_list, ft_lstnew(obj));
+
 	plane = malloc(sizeof(t_plane));
-	plane->center = point(0, -50, 0);
+	plane->center = point(0, -20, 0);
 	plane->normal = vec3(0.2, 1, 0);
 	plane->color = color2int(0, 0, 255);
 	obj = malloc(sizeof(t_obj));
