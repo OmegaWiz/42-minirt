@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/06 10:34:38 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 11:24:21 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,10 @@ void	draw(t_vars *vars);
 
 // raytrace.c
 int		raytrace(t_vec2 pixel, t_vars *vars);
+
+// raycast.c
 t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray);
 t_ray	get_ray(t_vec2 p, t_vars *vars);
-float	distance(t_point p1, t_point p2);
 
 // intersect.c
 bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);

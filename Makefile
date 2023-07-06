@@ -6,7 +6,7 @@
 #    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 08:16:18 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/07/05 20:16:49 by kkaiyawo         ###   ########.fr        #
+#    Updated: 2023/07/06 11:20:54 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ MLX_DIR			=	${LIB_DIR}mlx
 
 ### FILES ###
 SRC_FILE		=	miniRT.c hook.c init.c draw.c file.c color.c intersect.c\
-					raytrace.c light.c\
+					raytrace.c raycast.c shadow.c\
 					algebra1.c algebra2.c algebra3.c algebra4.c
 HEADER_FILE		=	miniRT.h algebra.h
 

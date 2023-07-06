@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.c                                            :+:      :+:    :+:   */
+/*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 19:57:47 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 11:13:54 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 11:24:44 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,3 @@ bool	is_shadow(t_ray hit_ray, t_vars *vars)
 	}
 	return (is_shadow);
 }
-
-// bool is_shadow(t_ray hit_ray, t_vars *vars)
-// {
-// 	(void)hit_ray;
-// 	(void)vars;
-// 	return (false);
-// }
