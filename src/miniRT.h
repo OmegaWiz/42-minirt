@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/06 12:45:35 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:24:51 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_camera_plane
 
 typedef struct s_ambient
 {
-	float	ratio;
+	float	brightness;
 	int		color;
 }	t_ambient;
 
@@ -158,6 +158,7 @@ int		color2int(int r, int g, int b);
 int		get_color(t_obj *obj);
 int		color_scale(int color, double scale);
 int		color_add(int color1, int color2);
+int		color_mult(int color1, int color2);
 
 // shadow.c
 bool	is_shadow(t_ray hit_ray, t_vars *vars);
