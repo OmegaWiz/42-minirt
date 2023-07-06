@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:20:37 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 11:24:23 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:03:31 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray)
 				min_dist = point_distance(vars->camera.origin, ray2.origin);
 				hit_obj = (t_obj *) (lst->content);
 				*hit_ray = ray2;
+				// hit_ray->origin = point_translate(hit_ray->origin, hit_ray->direction, 1e-4);
 			}
 		}
 		lst = lst->next;

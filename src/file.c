@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:50:18 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 11:17:08 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:20:23 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_file(int fd, t_vars *vars)
 	vars->camera.fov = 90;
 	cam_init(vars);
 
-	vars->light.origin = point(30, 100, 0);
+	vars->light.origin = point(0, 20, 0);
 	vars->light.color = color2int(255, 255, 255);
 	vars->light.brightness = 0.5;
 
@@ -96,7 +96,7 @@ int	cam_init(t_vars *vars)
 	cam_plane->normal = cam->direction;
 	cam_plane->width = 2 * tan((cam->fov / 2) * (M_PI / 180));
 	cam_plane->height = cam_plane->width * ((float) WIN_HEIGHT / WIN_WIDTH);
-	printf("width: %f height: %f\n", cam_plane->width, cam_plane->height);
+	// printf("width: %f height: %f\n", cam_plane->width, cam_plane->height);
 	cam_plane->right = vec3_cross(cam_plane->normal, vec3(0, 1, 0));
 	cam_plane->down = vec3_cross(cam_plane->right, cam_plane->normal);
 	cam_plane->top_left = point_add(cam_plane->center, point_neg(

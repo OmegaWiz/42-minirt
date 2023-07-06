@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/06 11:24:21 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:19:02 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,13 @@ bool	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
 // color.c
 int		color2int(int r, int g, int b);
 int		get_color(t_obj *obj);
+int		color_scale(int color, double scale);
+int		color_add(int color1, int color2);
 
-// light.c
+// shadow.c
 bool	is_shadow(t_ray hit_ray, t_vars *vars);
+
+// shade.c
+int		shade(t_ray hit_ray, t_obj *hit_obj, t_vars *vars, int color);
 
 #endif
