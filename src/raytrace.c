@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:47:21 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 21:06:31 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 09:51:17 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	raytrace(t_vec2 p, t_vars *vars)
 	t_ray	hit_ray;
 	t_obj	*hit_obj;
 
+	if (p.y == WIN_HEIGHT / 2)
+		printf("raytracing at pixel %.0f %.0f\n", p.x, p.y);
 	// printf("raytracing at pixel %.0f %.0f\n", p.x, p.y);
 	hit_obj = raycast(p, vars, &hit_ray);
 	if (hit_obj == NULL) // hit no object
@@ -66,20 +68,18 @@ bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2)
 t_ray	get_ray(t_vec2 p, t_vars *vars)
 {
 	t_ray	ray;
+	float	length;
+	t_point	pixel;
 
 	// printf("getting ray at pixel %.0f %.0f\n", p.x, p.y);
 	ray.origin = vars->camera.origin;
-	// printf("ray origin: %f %f %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
-	float half_fov = (vars->camera.fov / 2.0f) * M_PI / 180.0f;
-	float x_angle = ((p.x / (float) WIN_WIDTH) * half_fov * 2) - half_fov;
-	float y_angle = ((p.y / (float) WIN_HEIGHT) * half_fov * 2) - half_fov;
-	float x_deviation = tanf(x_angle);
-	float y_deviation = -tanf(y_angle);
-	// printf("%f %f %f %f %f\n", half_fov, x_angle, y_angle, x_deviation, y_deviation);
-	ray.direction.x = x_deviation * vars->cam_plane.width / 2.0f;
-	ray.direction.y = y_deviation * vars->cam_plane.height / 2.0f;
-	ray.direction.z = 1.0f;
-	// printf("ray direction: %f %f %f\n", ray.direction.x, ray.direction.y, ray.direction.z);
+	if (p.y == WIN_HEIGHT / 2)
+		printf("ray origin: %f %f %f\n", ray.origin.x, ray.origin.y, ray.origin.z);
+	length = tan((vars->camera.fov / 2) * M_PI / 180);
+	pixel.x = (2 * ((p.x + 0.5) / WIN_WIDTH) - 1) * length * vars->cam_plane.width / 2;
+	pixel.y = (1 - 2 * ((p.y + 0.5) / WIN_HEIGHT)) * length * vars->cam_plane.height / 2;
+	pixel.z = 1.0f;
+	ray.direction = vec3_normalize(point_sub(pixel, ray.origin));
 	return (ray);
 }
 

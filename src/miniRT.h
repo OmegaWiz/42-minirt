@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 20:58:42 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/06 08:49:47 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 # include <stdbool.h>
 
 # ifndef WIN_WIDTH
-#  define WIN_WIDTH 1920
+#  define WIN_WIDTH 500
 # endif
 
 # ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 1080
+#  define WIN_HEIGHT 500
 # endif
 
 typedef struct s_data {
