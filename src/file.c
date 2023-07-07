@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:50:18 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 17:03:26 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/07 07:39:26 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	parse_file(int fd, t_vars *vars)
 
 	sphere = malloc(sizeof(t_sphere));
 	sphere->center = point(-5, 10, 50);
-	sphere->radius = 10;
+	sphere->radius = 7;
 	sphere->color = color2int(255, 0, 0);
 	obj = malloc(sizeof(t_obj));
 	obj->type = SPHERE;
@@ -90,7 +90,7 @@ int	parse_file(int fd, t_vars *vars)
 
 	plane = malloc(sizeof(t_plane));
 	plane->center = point(0, -20, 0);
-	plane->normal = vec3(0.2, 1, 0);
+	plane->normal = vec3(0.1, 1, 0);
 	plane->color = color2int(0, 0, 255);
 	obj = malloc(sizeof(t_obj));
 	obj->type = PLANE;

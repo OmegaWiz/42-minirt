@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:40:55 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 16:21:09 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/07 07:39:08 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	my_mlx_pixel_put(t_data *data, t_vec2 px, int color)
 	x = (int) px.x;
 	if (x >= WIN_WIDTH || y >= WIN_HEIGHT)
 		return ;
-	// printf("putting pixel at x: %d, y: %d with color: %x\n", x, y, color);
 	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
 }
@@ -46,4 +45,3 @@ void	draw(t_vars *vars)
 		p.y++;
 	}
 }
-

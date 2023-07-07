@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:04:20 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/06 12:42:25 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/07 07:58:48 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,38 +25,34 @@ bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2)
 
 bool	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2)
 {
-	t_sphere *sphere;
+	t_sphere	*sphere;
+	t_vec3		oc;
+	t_point		abc;
+	t_point		d2r;
 
 	sphere = (t_sphere *) obj->obj;
-	t_vec3 oc = {ray1->origin.x - sphere->center.x, ray1->origin.y - sphere->center.y, ray1->origin.z - sphere->center.z};
-	float a = vec3_dot(ray1->direction, ray1->direction);
-	float b = 2.0f * vec3_dot(oc, ray1->direction);
-	float c = vec3_dot(oc, oc) - sphere->radius * sphere->radius;
-	float discriminant = b * b - 4.0f * a * c;
-	if (discriminant < 0.0f) {
-		return false;
-	}
-	float sqrtd = sqrtf(discriminant);
-	float root1 = (-b - sqrtd) / (2.0f * a);
-	float root2 = (-b + sqrtd) / (2.0f * a);
-	if (root1 < 0.0f && root2 < 0.0f) {
-		return false;
-	}
-	if (root1 < 0.0f) {
-		root1 = root2;
-	}
-	if (root2 < 0.0f) {
-		root2 = root1;
-	}
-	if (root1 > root2) {
-		root1 = root2;
-	}
-	ray2->origin = point_add(ray1->origin, vec3_to_point(vec3_scale(ray1->direction, root1)));
+	oc = point_sub(ray1->origin, sphere->center);
+	abc.x = vec3_dot(ray1->direction, ray1->direction);
+	abc.y = 2.0f * vec3_dot(oc, ray1->direction);
+	abc.z = vec3_dot(oc, oc) - sphere->radius * sphere->radius;
+	d2r.x = abc.y * abc.y - 4.0f * abc.x * abc.z;
+	if (d2r.x < 0.0f)
+		return (false);
+	d2r.y = (-abc.y - sqrtf(d2r.x)) / (2.0f * abc.x);
+	d2r.z = (-abc.y + sqrtf(d2r.x)) / (2.0f * abc.x);
+	if (d2r.y < 0.0f && d2r.z < 0.0f)
+		return (false);
+	if (d2r.y < 0.0f || d2r.y > d2r.z)
+		d2r.y = d2r.z;
+	if (d2r.z < 0.0f)
+		d2r.z = d2r.y;
+	ray2->origin = point_add(ray1->origin,
+			vec3_to_point(vec3_scale(ray1->direction, d2r.y)));
 	ray2->direction = vec3_normalize(point_sub(ray2->origin, sphere->center));
-	return true;
+	return (true);
 }
 
-bool		intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2)
+bool	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2)
 {
 	t_plane		*plane;
 	float		denom;
@@ -66,11 +62,12 @@ bool		intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2)
 	denom = vec3_dot(plane->normal, ray1->direction);
 	if (fabs(denom) > 0.0001)
 	{
-		t = vec3_dot(point_sub(plane->center, ray1->origin), plane->normal) / denom;
+		t = vec3_dot(point_sub(plane->center, ray1->origin),
+				plane->normal) / denom;
 		if (t > 0)
 		{
 			ray2->origin = point_add(ray1->origin,
-				vec3_to_point(vec3_scale(ray1->direction, t)));
+					vec3_to_point(vec3_scale(ray1->direction, t)));
 			ray2->direction = plane->normal;
 			return (true);
 		}
@@ -82,34 +79,30 @@ bool	intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2)
 {
 	t_cylinder	*cylinder;
 	t_vec3		oc;
-	float		a;
-	float		b;
-	float		c;
-	float		discriminant;
-	float		root1;
-	float		root2;
+	t_point		abc;
+	t_point		d2r;
 	float		t;
 	t_vec3		tmp;
 
 	cylinder = (t_cylinder *) obj->obj;
 	oc = point_sub(ray1->origin, cylinder->center);
-	a = vec3_dot(ray1->direction, ray1->direction) - pow(vec3_dot(ray1->direction, cylinder->normal), 2);
-	b = 2 * (vec3_dot(ray1->direction, oc) - vec3_dot(ray1->direction, cylinder->normal) * vec3_dot(oc, cylinder->normal));
-	c = vec3_dot(oc, oc) - pow(vec3_dot(oc, cylinder->normal), 2) - pow(cylinder->radius, 2);
-	discriminant = b * b - 4 * a * c;
-	if (discriminant < 0)
+	abc.x = vec3_dot(ray1->direction, ray1->direction) - pow(vec3_dot(ray1->direction, cylinder->normal), 2);
+	abc.y = 2 * (vec3_dot(ray1->direction, oc) - vec3_dot(ray1->direction, cylinder->normal) * vec3_dot(oc, cylinder->normal));
+	abc.z = vec3_dot(oc, oc) - pow(vec3_dot(oc, cylinder->normal), 2) - pow(cylinder->radius, 2);
+	d2r.x = abc.y * abc.y - 4 * abc.x * abc.z;
+	if (d2r.x < 0)
 		return (false);
-	root1 = (-b - sqrt(discriminant)) / (2 * a);
-	root2 = (-b + sqrt(discriminant)) / (2 * a);
-	if (root1 < 0 && root2 < 0)
+	d2r.y = (-abc.y - sqrt(d2r.x)) / (2 * abc.x);
+	d2r.z = (-abc.y + sqrt(d2r.x)) / (2 * abc.x);
+	if (d2r.y < 0 && d2r.z < 0)
 		return (false);
-	if (root1 < 0)
-		root1 = root2;
-	if (root2 < 0)
-		root2 = root1;
-	if (root1 > root2)
-		root1 = root2;
-	t = root1;
+	if (d2r.y < 0)
+		d2r.y = d2r.z;
+	if (d2r.z < 0)
+		d2r.z = d2r.y;
+	if (d2r.y > d2r.z)
+		d2r.y = d2r.z;
+	t = d2r.y;
 	ray2->origin = point_add(ray1->origin, vec3_to_point(vec3_scale(ray1->direction, t)));
 	tmp = point_sub(ray2->origin, cylinder->center);
 	ray2->direction = vec3_normalize(vec3_sub(tmp, vec3_scale(cylinder->normal, vec3_dot(tmp, cylinder->normal))));
