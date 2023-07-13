@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:20:37 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/07 08:00:30 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:46:20 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray)
 	lst = vars->obj_list;
 	while (lst)
 	{
-		if (is_intersect((t_obj *)(lst->content), &ray1, &ray2) == true)
+		if (is_intersect((t_obj *)(lst->content), &ray1, &ray2) == 1)
 		{
 			if (point_distance(vars->camera.origin, ray2.origin) < min_dist)
 			{

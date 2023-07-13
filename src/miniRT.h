@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/06 14:24:51 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:46:03 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-# include <stdbool.h>
+# include <stdint.h>
 
 # ifndef WIN_WIDTH
 #  define WIN_WIDTH 1080
@@ -94,7 +94,7 @@ typedef struct s_plane
 typedef struct s_cylinder
 {
 	t_point	center;
-	t_vec3	normal;
+	t_vec3	direction;
 	float	radius;
 	float	height;
 	int		color;
@@ -148,10 +148,11 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray);
 t_ray	get_ray(t_vec2 p, t_vars *vars);
 
 // intersect.c
-bool	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);
-bool	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2);
-bool	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
-bool	intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2);
+int	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);
+int	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2);
+int	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
+int	intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2);
+double	solve_quadratic(double a, double b, double c);
 
 // color.c
 int		color2int(int r, int g, int b);
@@ -161,7 +162,7 @@ int		color_add(int color1, int color2);
 int		color_mult(int color1, int color2);
 
 // shadow.c
-bool	is_shadow(t_ray hit_ray, t_vars *vars);
+int	is_shadow(t_ray hit_ray, t_vars *vars);
 
 // shade.c
 int		shade(t_ray hit_ray, t_obj *hit_obj, t_vars *vars, int color);
