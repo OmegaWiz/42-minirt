@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/17 01:26:38 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/17 03:41:56 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	verify_line(char *line)
 }
 
 void	goinfile(int fd)
- {
-	int 		i;
+{
+	int			i;
 	char		*gotline;
 	static int	cnt;
 
@@ -58,21 +58,13 @@ void	goinfile(int fd)
 	cnt = ft_splitcntt(gotline);
 	while (gotline && i < cnt)
 	{
-		// printf(BMAG"this is len gotline [%d]\n"RESET, cnt);
-		// if (gotline[0] == 0)
-		// 	error(BRED"line wrong"RESET,0);
-		// else
-		// {
-			verify_line(gotline);
-			i++;
-			gotline = get_next_line(fd);
-			cnt = ft_splitcntt(gotline);
-			i = 0;
-			// break ;
-		// }
+		verify_line(gotline);
+		i++;
+		gotline = get_next_line(fd);
+		cnt = ft_splitcntt(gotline);
+		i = 0;
 	}
-
- }
+}
 
 void	verify_file(char **av)
 {
