@@ -6,7 +6,7 @@
 #    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 08:16:18 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/07/12 17:15:16 by kkaiyawo         ###   ########.fr        #
+#    Updated: 2023/07/27 13:45:02 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,12 @@ LIBFT_DIR		=	${LIB_DIR}libft
 MLX_DIR			=	${LIB_DIR}mlx
 
 ### FILES ###
-SRC_FILE		=	miniRT.c hook.c init.c draw.c file.c color.c intersect.c\
-					raytrace.c raycast.c shadow.c shade.c intersect_cylinder.c\
+SRC_FILE		=	minirt.c color.c draw.c file.c hook.c init.c intersect.c\
+					minirt.c obj_camera.c obj_cylinder_intersect.c obj_cylinder.c\
+					obj_plane.c obj_sphere.c raycast.c raytrace.c shade.c\
+					shadow.c translate.c\
 					algebra1.c algebra2.c algebra3.c algebra4.c
-HEADER_FILE		=	miniRT.h algebra.h
+HEADER_FILE		=	minirt.h algebra.h
 
 ### LIBRARIES ###
 LIBFT_AR			=	${LIBFT_DIR}/libft.a

@@ -6,11 +6,11 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:40:25 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/05 08:49:48 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "minirt.h"
 
 void	win_init(t_vars *vars)
 {

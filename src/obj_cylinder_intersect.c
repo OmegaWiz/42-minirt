@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "minirt.h"
 
 int	intersect_cylinder_top(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2)
 {
@@ -80,34 +80,5 @@ int	intersect_cylinder_body(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2)
 	ray2->origin = point_translate(ray1->origin, ray1->direction, t);
 	ray2->direction = vec3_normalize(point_sub(ray2->origin, point_translate(bottom_center,
 					cylinder->direction, m)));
-	return (1);
-}
-
-int	intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2)
-{
-	t_ray	tmp_ray;
-	double	min_dist;
-	int		i;
-	int		(*intersect [3])(t_cylinder *, t_ray *, t_ray *);
-
-	min_dist = INFINITY;
-	intersect[0] = intersect_cylinder_body;
-	intersect[1] = intersect_cylinder_top;
-	intersect[2] = intersect_cylinder_bot;
-	i = -1;
-	while (++i < 3)
-	{
-		if (intersect[i]((t_cylinder *) obj->obj, ray1, &tmp_ray) == 1)
-		{
-			if (point_distance(ray1->origin, tmp_ray.origin) < min_dist)
-			{
-				min_dist = point_distance(ray1->origin, tmp_ray.origin);
-				ray2->origin = tmp_ray.origin;
-				ray2->direction = tmp_ray.direction;
-			}
-		}
-	}
-	if (min_dist == INFINITY)
-		return (0);
 	return (1);
 }

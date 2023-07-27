@@ -6,11 +6,11 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:19:51 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/05 08:52:26 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:45:12 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "minirt.h"
 
 int	main(int argc, char **argv)
 {

@@ -6,11 +6,11 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 09:25:39 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/07 07:38:44 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "minirt.h"
 
 int	color2int(int r, int g, int b)
 {

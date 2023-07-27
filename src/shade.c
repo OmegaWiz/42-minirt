@@ -6,11 +6,11 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:33:38 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/07 08:01:29 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "minirt.h"
 
 int	shade(t_ray hit_ray, t_obj *hit_obj, t_vars *vars, int color)
 {

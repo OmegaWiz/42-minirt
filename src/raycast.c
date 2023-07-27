@@ -6,11 +6,11 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:20:37 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/12 19:46:20 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "minirt.h"
 
 t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray)
 {

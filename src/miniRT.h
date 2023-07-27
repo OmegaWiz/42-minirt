@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/16 03:27:01 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:35:00 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,47 +124,68 @@ typedef struct s_vars {
 	t_list			*obj_list;
 }	t_vars;
 
-// file.c
-int		file_init(t_vars *vars, char *file);
-int		parse_file(int fd, t_vars *vars);
-int		cam_init(t_vars *vars);
-
-// init.c
-void	win_init(t_vars *vars);
-
-// hook.c
-int		close_x(void *param);
-int		key_hook(int keycode, void *param);
-int		do_none(void *data);
+// color.c
+int			color2int(int r, int g, int b);
+int			get_color(t_obj *obj);
+int			color_scale(int color, double scale);
+int			color_add(int color1, int color2);
+int			color_mult(int color1, int color2);
 
 // draw.c
-void	draw(t_vars *vars);
+void		draw(t_vars *vars);
+void		my_mlx_pixel_put(t_data *data, t_vec2 px, int color);
 
-// raytrace.c
-int		raytrace(t_vec2 pixel, t_vars *vars);
+// file.c
+int			file_init(t_vars *vars, char *file);
+int			parse_file(int fd, t_vars *vars);
+int			cam_init(t_vars *vars);
 
-// raycast.c
-t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray);
-t_ray	get_ray(t_vec2 p, t_vars *vars);
+// hook.c
+int			close_x(void *param);
+int			key_hook(int keycode, void *param);
+int			do_none(void *data);
+
+// init.c
+void		win_init(t_vars *vars);
 
 // intersect.c
-int	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);
-int	intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2);
-int	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
-int	intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2);
-double	solve_quadratic(double a, double b, double c);
+int			is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2);
+double		solve_quadratic(double a, double b, double c);
 
-// color.c
-int		color2int(int r, int g, int b);
-int		get_color(t_obj *obj);
-int		color_scale(int color, double scale);
-int		color_add(int color1, int color2);
-int		color_mult(int color1, int color2);
+// obj_camera.c
+void		cam_translate(t_vars *vars);
 
-// shadow.c
-int	is_shadow(t_ray hit_ray, t_vars *vars);
+// obj_cylinder.c
+int			intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2);
+t_cylinder	*translate_cylinder(void *obj, t_point ori_pt, t_vec3 ori_vec);
+
+// obj_cylinder_intersect.c
+int			intersect_cylinder_top(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2);
+int			intersect_cylinder_bot(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2);
+int			intersect_cylinder_body(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2);
+
+// obj_plane.c
+int			intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
+t_plane		*translate_plane(void *obj, t_point ori_pt, t_vec3 ori_vec);
+
+// obj_sphere.c
+int			intersect_sphere(t_obj *obj, t_ray *ray1, t_ray *ray2);
+t_sphere	*translate_sphere(void *obj, t_point ori_pt, t_vec3 ori_vec);
+
+// raycast.c
+t_obj		*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray);
+t_ray		get_ray(t_vec2 p, t_vars *vars);
+
+// raytrace.c
+int			raytrace(t_vec2 pixel, t_vars *vars);
 
 // shade.c
-int		shade(t_ray hit_ray, t_obj *hit_obj, t_vars *vars, int color);
+int			shade(t_ray hit_ray, t_obj *hit_obj, t_vars *vars, int color);
+
+// shadow.c
+int			is_shadow(t_ray hit_ray, t_vars *vars);
+
+// translate.c
+void		translate_obj(t_vars *vars, t_point ori_pt, t_vec3 ori_vec);
 
 #endif
