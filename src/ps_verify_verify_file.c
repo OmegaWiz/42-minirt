@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verify_file.c                                      :+:      :+:    :+:   */
+/*   ps_verify_verify_file.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 08:46:16 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:08:51 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../paser.h"
+#include "minirt.h"
 
 void	verify_len(char **line, int len)
 {

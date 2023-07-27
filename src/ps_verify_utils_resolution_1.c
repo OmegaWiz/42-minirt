@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_resolution_1.c                               :+:      :+:    :+:   */
+/*   ps_verify_utils_resolution_1.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 02:40:50 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 08:31:24 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:08:51 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../paser.h"
+#include "minirt.h"
 
 void	util_radius(char *radius)
 {

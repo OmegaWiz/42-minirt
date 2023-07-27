@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:20:37 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:03:58 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray)
 	t_ray	ray2;
 	t_list	*lst;
 	t_obj	*hit_obj;
-	float	min_dist;
+	double	min_dist;
 
 	ray1 = get_ray(p, vars);
 	min_dist = INFINITY;
@@ -43,7 +43,7 @@ t_obj	*raycast(t_vec2 p, t_vars *vars, t_ray *hit_ray)
 t_ray	get_ray(t_vec2 p, t_vars *vars)
 {
 	t_ray	ray;
-	float	length;
+	double	length;
 	t_point	pixel;
 
 	ray.origin = vars->camera.origin;

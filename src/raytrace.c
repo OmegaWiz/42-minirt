@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:47:21 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:03:44 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	raytrace(t_vec2 p, t_vars *vars)
 		if (is_shadow(hit_ray, vars) == 1)
 			return (color);
 		else
-			return (color_add(color_mult(color, get_color(hit_obj)),
-					shade(hit_ray, hit_obj, vars, get_color(hit_obj))));
+			return (color_add(color_mult(color, obj_color(hit_obj)),
+					shade(hit_ray, hit_obj, vars, obj_color(hit_obj))));
 	}
 	return (color);
 }

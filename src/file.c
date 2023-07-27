@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:50:18 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 13:33:49 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:20:47 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	cam_init(t_vars *vars)
 	cam_pln->center = cam->origin;
 	cam_pln->normal = cam->direction;
 	cam_pln->width = 2 * tan((cam->fov / 2) * (M_PI / 180));
-	cam_pln->height = cam_pln->width * ((float) WIN_HEIGHT / WIN_WIDTH);
+	cam_pln->height = cam_pln->width * ((double) WIN_HEIGHT / WIN_WIDTH);
 	cam_pln->right = vec3_cross(cam_pln->normal, vec3(0, 1, 0));
 	cam_pln->down = vec3_cross(cam_pln->right, cam_pln->normal);
 	cam_pln->top_left = point_add(cam_pln->center, point_neg(

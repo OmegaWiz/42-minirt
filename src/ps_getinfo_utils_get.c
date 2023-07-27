@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_get.c                                        :+:      :+:    :+:   */
+/*   ps_getinfo_utils_get.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 23:33:03 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 08:43:20 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:03:14 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../paser.h"
+#include "minirt.h"
 
 void	get_vec3(char **xyz, t_vec3 *pos)
 {
@@ -26,11 +26,14 @@ void	get_point(char **xyz, t_point *pos)
 	pos->z = ft_atof(xyz[2]);
 }
 
-void	get_color(char **colour, t_color *color)
+void	get_color(char **colour, int *color)
 {
-	color->x = ft_atoi(colour[0]);
-	color->y = ft_atoi(colour[1]);
-	color->z = ft_atoi(colour[2]);
+	t_color	col;
+
+	col.x = ft_atoi(colour[0]);
+	col.y = ft_atoi(colour[1]);
+	col.z = ft_atoi(colour[2]);
+	*color = color2int(col.x, col.y, col.z);
 }
 
 int	*get_digit(char *digit, int	*color)

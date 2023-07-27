@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 09:25:39 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:07:39 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	color2int(int r, int g, int b)
 	return (r << 16 | g << 8 | b);
 }
 
-int	get_color(t_obj *obj)
+int	obj_color(t_obj *obj)
 {
 	if (obj->type == SPHERE)
 		return (((t_sphere *) obj->obj)->color);

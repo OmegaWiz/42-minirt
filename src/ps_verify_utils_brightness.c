@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_brightness.c                                 :+:      :+:    :+:   */
+/*   ps_verify_utils_brightness.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 04:19:50 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/24 05:04:10 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:19:01 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../paser.h"
+#include "minirt.h"
 
 void	util_ratio_light(char **brightness)
 {
@@ -25,10 +25,10 @@ void	util_ratio_light(char **brightness)
 			while (ft_atoi(&brightness[2][2]) != i && i != 11)
 				i++;
 			if (i == 10 || (brightness[2][0] == '1' && brightness[2][2] != '0'))
-				error(BYEL"brightness not correct"RESET, 0);
+				error(BYEL"brightness not correct"RESET);
 		}
 	}
 	else
-		error(BYEL"brightness not correct"RESET, 0);
+		error(BYEL"brightness not correct"RESET);
 	printf(BCYN"brightness ok next\n"RESET); //del
 }

@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 09:37:01 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 13:35:47 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:20:54 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2)
 {
 	t_plane		*plane;
-	float		denom;
-	float		t;
+	double		denom;
+	double		t;
 
 	plane = (t_plane *) obj->obj;
 	denom = vec3_dot(plane->normal, ray1->direction);

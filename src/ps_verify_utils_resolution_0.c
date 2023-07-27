@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_resolution_0.c                               :+:      :+:    :+:   */
+/*   ps_verify_utils_resolution_0.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:08:00 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 08:30:38 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:08:51 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../paser.h"
+#include "minirt.h"
 
 void	util_dir(char *direction)
 {

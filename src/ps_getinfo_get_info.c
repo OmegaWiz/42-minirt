@@ -1,55 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_info.c                                         :+:      :+:    :+:   */
+/*   ps_getinfo_get_info.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 15:21:59 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 10:44:14 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:55:45 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../paser.h"
+#include "minirt.h"
 
-void	get_line(char *line, t_vars *paser)
+void	get_line(char *line, t_vars *parser)
 {
 	char	**chop;
+
+	printf("\ninfo: %s", line);
 	chop = split_blank(line);
+	if (chop == NULL)
+		return ;
+	if (chop[0] == NULL)
+			erase_split(chop);
+	if (chop[0] == NULL)
+			return ;
 	if (chop[0][0] == 'A')
-		go_get_a(chop, paser);
+		go_get_a(chop, parser);
 	else if (chop[0][0] == 'C')
-		go_get_c(chop, paser);
+		go_get_c(chop, parser);
 	else if (chop[0][0] == 'L')
-		go_get_l(chop, paser);
+		go_get_l(chop, parser);
 	else if (chop[0][0] == 's' && chop[0][1] == 'p')
-		go_get_sp(chop, paser);
+		go_get_sp(chop, parser);
 	else if (chop[0][0] == 'p' && chop[0][1] == 'l')
-		go_get_pl(chop, paser);
+		go_get_pl(chop, parser);
 	else if (chop[0][0] == 'c' && chop[0][1] == 'y')
-		go_get_cy(chop, paser);
+		go_get_cy(chop, parser);
 	erase_split(chop);
 }
 
-void	get_info(t_vars *paser, char *av)
+void	get_info(t_vars *parser, char *av)
 {
 	int			fd;
-	int			i;
+	// int			i;
 	char		*line;
-	static int	cnt;
+	// static int	cnt;
 
-	i = 0;
+	// i = 0;
 	fd = open(av, O_RDONLY);
 	line = get_next_line(fd);
-	cnt = ft_splitcntt(line);
-	while (line != NULL && i < cnt)
+	// cnt = ft_splitcntt(line);
+	while (line != NULL )//&& i < cnt)
 	{
-		get_line(line, paser);
+		get_line(line, parser);
 		free(line);
-		i++;
+		// i++;
 		line = get_next_line(fd);
-		cnt = ft_splitcntt(line);
-		i = 0;
+		// cnt = ft_splitcntt(line);
+		// i = 0;
 	}
-	free(line);
+		free(line);
 }
