@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:08:00 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 20:33:21 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:53:35 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,21 @@ void	util_fov(char *fov)
 
 void	util_ratio(char **ratio, int index)
 {
-	if ((ft_atof(ratio[index]) < 0.0 || ft_atof(ratio[index]) > 1.0)
-		|| twod_is_decimal(&ratio[index]) == 0)
+	int	i;
+
+	i = 0;
+	if ((ratio[index][0] == '0' || ratio[index][0] == '1') && ratio[index][1] == '.')
 	{
-		free_error(BYEL"ratio not correct"RESET, ratio);
-		
+		if (twod_is_decimal(&ratio[index]) && ft_strlen(ratio[index]) == 3)
+		{
+			while (ft_atoi(&ratio[index][2]) != i && i != 11)
+				i++;
+			if (i == 10 || (ratio[index][0] == '1' && ratio[index][2] != '0'))
+				free_error(BYEL"ratio not correct"RESET, ratio);
+		}
 	}
+	else
+		free_error(BYEL"ratio not correct"RESET, ratio);
 	// printf(BCYN"ratio ok next\n"RESET); //del
 }
 
