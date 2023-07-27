@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_verify_verify_file.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 14:08:51 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/28 02:44:55 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ void	verify_len(char **line, int len)
 
 	i = 0;
 	while (line[i])
+	{
+		if (i_c_comment(line[i]) == 1)
+			break ;
 		i++;
+	}
 	if (i != len)
 		free_error(BYEL"--len not correct--"RESET, line);
 	// printf(BMAG"--len correct--\n"RESET);
