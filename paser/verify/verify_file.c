@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/17 03:41:56 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:46:16 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	verify_len(char **line, int len)
 	while (line[i])
 		i++;
 	if (i != len)
-		error(BYEL"--len not correct--"RESET, 0);
-	printf(BMAG"--len correct--\n"RESET);
+		free_error(BYEL"--len not correct--"RESET, line);
+	// printf(BMAG"--len correct--\n"RESET);
 }
 
 void	verify_line(char *line)
@@ -29,6 +29,11 @@ void	verify_line(char *line)
 	char	**chopchop;
 
 	chopchop = split_blank(line);
+	if (chopchop[0] == NULL)
+	{
+		free(chopchop);
+		return ;
+	}
 	if (chopchop[0][0] == 'A')
 		verify_a(chopchop);
 	else if (chopchop[0][0] == 'C')
@@ -42,26 +47,27 @@ void	verify_line(char *line)
 	else if (chopchop[0][0] == 'c' && chopchop[0][1] == 'y')
 		verify_cy(chopchop);
 	else
-		error(BRED"info wrong"RESET, 0);
+		// free_error(BRED"info wrong"RESET, chopchop);
+		error(BRED"info wrong"RESET);
+	erase_split(chopchop);
 }
 
 void	goinfile(int fd)
 {
 	int			i;
 	char		*gotline;
-	static int	cnt;
 
 	i = 0;
 	gotline = get_next_line(fd);
 	if (gotline == NULL)
-		error(BRED"cannot get_line"RESET, 0);
-	cnt = ft_splitcntt(gotline);
-	while (gotline && i < cnt)
+		error(BRED"cannot get_line"RESET);
+	while (gotline)
 	{
-		verify_line(gotline);
+		if (i_c_comment(gotline) == 0)
+			verify_line(gotline);
 		i++;
+		free(gotline); //add
 		gotline = get_next_line(fd);
-		cnt = ft_splitcntt(gotline);
 		i = 0;
 	}
 }
@@ -73,13 +79,13 @@ void	verify_file(char **av)
 
 	rt = ft_strrchr(av[1], '.');
 	if (!(rt && ft_strncmp(ft_strrchr(av[1], '.'), ".rt", 4) == 0))
-		error(BRED"file not correct Σ(￣ロ￣lll)"RESET, 0);
+		error(BRED"file not correct Σ(￣ロ￣lll)"RESET);
 	else
 	{
 		printf(BBLU"file .rt correct (─‿‿─)\n"RESET);
 		fd = open(av[1], O_RDONLY);
 		if (fd < 0)
-			error(BRED"cannot open file Σ(￣ロ￣lll)"RESET, 0);
+			error(BRED"cannot open file Σ(￣ロ￣lll)"RESET);
 		goinfile(fd);
 		close(fd);
 	}
