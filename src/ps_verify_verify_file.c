@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 02:44:55 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/28 03:14:53 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,29 +51,47 @@ void	verify_line(char *line)
 	else if (chopchop[0][0] == 'c' && chopchop[0][1] == 'y')
 		verify_cy(chopchop);
 	else
-		// free_error(BRED"info wrong"RESET, chopchop);
 		error(BRED"info wrong"RESET);
 	erase_split(chopchop);
+}
+
+void	cnt_ambi_camera(char *line, int *cnt_a, int *cnt_c)
+{
+	if (line[0] == 'A')
+		*cnt_a += 1;
+	else if (line[0] == 'C')
+		*cnt_c += 1;
+	else
+		return ;
 }
 
 void	goinfile(int fd)
 {
 	int			i;
+	int			cnt_a;
+	int			cnt_c;
 	char		*gotline;
 
 	i = 0;
+	cnt_a = 0;
+	cnt_c = 0;
 	gotline = get_next_line(fd);
 	if (gotline == NULL)
 		error(BRED"cannot get_line"RESET);
 	while (gotline)
 	{
-		if (i_c_comment(gotline) == 0)
+		if (gotline[0] != '#')
 			verify_line(gotline);
 		i++;
-		free(gotline); //add
+		cnt_ambi_camera(gotline, &cnt_a, &cnt_c);
+		free(gotline);
 		gotline = get_next_line(fd);
 		i = 0;
 	}
+	if (!(cnt_a == 1 || cnt_a == 0))
+		error(BRED"ambi should be 0 or 1"RESET);
+	else if (cnt_c != 1)
+		error(BRED"camera only 1"RESET);
 }
 
 void	verify_file(char **av)
@@ -93,4 +111,4 @@ void	verify_file(char **av)
 		goinfile(fd);
 		close(fd);
 	}
-}
+} 
