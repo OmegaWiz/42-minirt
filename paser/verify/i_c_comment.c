@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   i_c_comment.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 23:08:48 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 09:18:22 by psaeyang         ###   ########.fr       */
+/*   Created: 2023/07/19 17:32:53 by psaeyang          #+#    #+#             */
+/*   Updated: 2023/07/24 23:08:52 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "paser.h"
+#include "../paser.h"
 
-void	erase_split(char **av)
+int	empty_line(char *line)
 {
-	// while (*av)
-	// 	free(*av++);
-	// free (av);
-	int	i;
-
-	i = 0;
-	if (av == NULL)
-		return ;
-	while (av[i] != NULL)
-	{
-		free(av[i]);
-		i++;
-	}
-	free(av);
-	// printf("erase_split done :)\n");
+	if (line[0] == '\n')
+		return (1);
+	return (0);
 }
 
-void	free_error(char *s, char **free)
+int	i_c_comment(char *line)
 {
-	erase_split(free);
-	error(s);
-}
-
-void	error(char *s)
-{
-	ft_putendl_fd(s, 2);
-		exit(0);
+	if (ft_strchr(line, '#') != NULL)
+		return (1);
+	return (0);
 }
