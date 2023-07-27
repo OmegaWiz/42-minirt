@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:36:47 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 03:56:38 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/28 03:59:36 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	go_get_sp(char **chop, t_vars *parser)
 	get_decimal(chop[2], &sphere->radius);
 	split = ft_split(chop[3], ',');
 	get_color(split, &sphere->color);
-	obj = malloc(sizeof(t_obj));
+	obj = malloc(sizeof(t_oxbj));
 	obj->type = SPHERE;
 	obj->obj = sphere;
 	ft_lstadd_front(&parser->obj_list, ft_lstnew(obj));
