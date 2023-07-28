@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/27 15:43:33 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 19:48:57 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ int			key_hook(int keycode, void *param);
 int			do_none(void *data);
 
 // init.c
+void		vars_init(t_vars *vars);
 void		win_init(t_vars *vars);
 
 // intersect.c

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 09:04:03 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/07/27 09:12:31 by psaeyang         ###   ########.fr        #
+#    Updated: 2023/07/27 20:08:50 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJS		= ${SRCS:.c=.o}
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -g -Wall -Wextra -Werror -O3 #-fsanitize=address
 
 RM			= rm -f
 

@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 15:21:59 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 15:55:45 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:14:50 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void	get_line(char *line, t_vars *parser)
 	if (chop == NULL)
 		return ;
 	if (chop[0] == NULL)
-			erase_split(chop);
-	if (chop[0] == NULL)
-			return ;
+	{
+		erase_split(chop);
+		return ;
+	}
 	if (chop[0][0] == 'A')
 		go_get_a(chop, parser);
 	else if (chop[0][0] == 'C')
@@ -59,5 +60,6 @@ void	get_info(t_vars *parser, char *av)
 		// cnt = ft_splitcntt(line);
 		// i = 0;
 	}
-		free(line);
+	free(line);
+	close(fd);
 }

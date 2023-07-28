@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 08:40:25 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 15:59:08 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 19:49:04 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,16 @@ void	win_init(t_vars *vars)
 	mlx_hook(vars->win, 17, 0, close_x, (void *) vars);
 	mlx_key_hook(vars->win, key_hook, (void *) vars);
 	mlx_loop(vars->mlx);
+}
+
+void	vars_init(t_vars *vars)
+{
+	vars->mlx = NULL;
+	vars->win = NULL;
+	vars->img.img = NULL;
+	vars->img.addr = NULL;
+	vars->img.bpp = 0;
+	vars->img.line_len = 0;
+	vars->img.end = 0;
+	vars->obj_list = NULL;
 }

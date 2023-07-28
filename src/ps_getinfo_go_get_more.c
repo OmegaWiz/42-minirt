@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:36:47 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 15:51:04 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/27 19:10:50 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	go_get_sp(char **chop, t_vars *parser)
 	obj = malloc(sizeof(t_obj));
 	obj->type = SPHERE;
 	obj->obj = sphere;
-	printf("here sp\n");
 	ft_lstadd_front(&parser->obj_list, ft_lstnew(obj));
 
 	t_list *lst;

@@ -6,7 +6,7 @@
 #    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 08:16:18 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/07/27 14:39:21 by kkaiyawo         ###   ########.fr        #
+#    Updated: 2023/07/27 20:08:56 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ BONUS_OBJ		=	${BONUS:.c=.o}
 
 ### COMPILATION ###
 CC				=	gcc
-CFLAG			=	-g -Wall -Wextra -Werror -O3
+CFLAG			=	-g -Wall -Wextra -Werror -O3 #-fsanitize=address
 MLX_LIB			=	-lm -framework OpenGL -framework AppKit
 MLX_INCL		=	-Imlx
 RM				=	rm -f
