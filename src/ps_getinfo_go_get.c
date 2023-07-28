@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_getinfo_go_get.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 22:56:46 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 16:24:56 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/28 03:54:28 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	go_get_c(char **chop, t_vars *parser)
 	camera = malloc(sizeof(t_camera));
 	split = ft_split(chop[1], ',');
 	get_point(split, &camera->origin);
+	erase_split(split);
 	split = ft_split(chop[2], ',');
 	get_vec3(split, &camera->direction);
 	get_decimal(chop[3], &camera->fov);
