@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_verify_verify_file.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 03:14:53 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/07/28 09:57:59 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	goinfile(int fd)
 	cnt_c = 0;
 	gotline = get_next_line(fd);
 	if (gotline == NULL)
-		error(BRED"cannot get_line"RESET);
+		error(BRED"empty file"RESET);
 	while (gotline)
 	{
 		if (gotline[0] != '#')
@@ -104,11 +104,11 @@ void	verify_file(char **av)
 		error(BRED"file not correct Σ(￣ロ￣lll)"RESET);
 	else
 	{
-		printf(BBLU"file .rt correct (─‿‿─)\n"RESET);
+		printf(BBLU"valid file name (─‿‿─)\n"RESET);
 		fd = open(av[1], O_RDONLY);
 		if (fd < 0)
 			error(BRED"cannot open file Σ(￣ロ￣lll)"RESET);
 		goinfile(fd);
 		close(fd);
 	}
-} 
+}

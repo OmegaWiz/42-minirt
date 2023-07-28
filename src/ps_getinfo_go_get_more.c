@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:36:47 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 08:00:13 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/28 09:18:54 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	go_get_pl(char **chop, t_vars *parser)
 	get_point(split, &plane->center);
 	erase_split(split);
 	split = ft_split(chop[2], ',');
-	erase_split(split);
 	get_vec3(split, &plane->normal);
+	erase_split(split);
 	split = ft_split(chop[3], ',');
 	get_color(split, &plane->color);
 	obj->type = PLANE;
@@ -87,7 +87,7 @@ void	go_get_sp(char **chop, t_vars *parser)
 	get_decimal(chop[2], &sphere->radius);
 	split = ft_split(chop[3], ',');
 	get_color(split, &sphere->color);
-	obj = malloc(sizeof(t_oxbj));
+	obj = malloc(sizeof(t_obj));
 	obj->type = SPHERE;
 	obj->obj = sphere;
 	ft_lstadd_front(&parser->obj_list, ft_lstnew(obj));
