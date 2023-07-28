@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 09:57:59 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/07/28 10:05:15 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ void	verify_line(char *line)
 		free(chopchop);
 		return ;
 	}
-	if (chopchop[0][0] == 'A')
+	if (ft_strncmp(chopchop[0], "A", 2) == 0)
 		verify_a(chopchop);
-	else if (chopchop[0][0] == 'C')
+	else if (ft_strncmp(chopchop[0], "C", 2) == 0)
 		verify_c(chopchop);
-	else if (chopchop[0][0] == 'L')
+	else if (ft_strncmp(chopchop[0], "L", 2) == 0)
 		verify_l(chopchop);
-	else if (chopchop[0][0] == 's' && chopchop[0][1] == 'p')
+	else if (ft_strncmp(chopchop[0], "sp", 3) == 0)
 		verify_sp(chopchop);
-	else if (chopchop[0][0] == 'p' && chopchop[0][1] == 'l')
+	else if (ft_strncmp(chopchop[0], "pl", 3) == 0)
 		verify_pl(chopchop);
-	else if (chopchop[0][0] == 'c' && chopchop[0][1] == 'y')
+	else if (ft_strncmp(chopchop[0], "cy", 3) == 0)
 		verify_cy(chopchop);
 	else
-		error(BRED"info wrong"RESET);
+		error(BRED"invalid identifier"RESET);
 	erase_split(chopchop);
 }
 
