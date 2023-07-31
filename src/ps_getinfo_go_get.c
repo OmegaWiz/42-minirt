@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 22:56:46 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 03:54:28 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:33:50 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	go_get_l(char **chop, t_vars *parser)
 	erase_split(split);
 	parser->light = *light;
 	parser->light.color = color2int(255, 255, 255);
-	printf(BCYN"light origin:{%f, %f, %f} brightness:%f\n"RESET, parser->light.origin.x, parser->light.origin.y, parser->light.origin.z, parser->light.brightness);
 }
 
 void	go_get_c(char **chop, t_vars *parser)
@@ -41,12 +40,11 @@ void	go_get_c(char **chop, t_vars *parser)
 	get_decimal(chop[3], &camera->fov);
 	erase_split(split);
 	parser->camera = *camera;
-	printf(BCYN"camera origin:{%f, %f, %f} direction:{%f, %f, %f} fov:%f\n"RESET, parser->camera.origin.x, parser->camera.origin.y, parser->camera.origin.z, parser->camera.direction.x, parser->camera.direction.y, parser->camera.direction.z, parser->camera.fov);
 }
 
 void	go_get_a(char **chop, t_vars *parser)
 {
-	t_ambient	*ambi = NULL;
+	t_ambient	*ambi
 	char		**split;
 
 	ambi = malloc(sizeof(t_ambient));
@@ -55,5 +53,4 @@ void	go_get_a(char **chop, t_vars *parser)
 	get_color(split, &ambi->color);
 	erase_split(split);
 	parser->ambient = *ambi;
-	printf(BCYN"ambi color:{%d, %d, %d}, brightness:%f\n"RESET, (parser->ambient.color & (255 << 16)) >> 16, (parser->ambient.color & (255 << 8)) >> 8, parser->ambient.color & 255, parser->ambient.brightness);
 }

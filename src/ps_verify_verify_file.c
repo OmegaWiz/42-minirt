@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_verify_verify_file.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 10:05:15 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:30:51 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	verify_len(char **line, int len)
 	}
 	if (i != len)
 		free_error(BYEL"--len not correct--"RESET, line);
-	// printf(BMAG"--len correct--\n"RESET);
 }
 
 void	verify_line(char *line)

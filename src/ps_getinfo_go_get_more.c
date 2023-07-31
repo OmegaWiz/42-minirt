@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_getinfo_go_get_more.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:36:47 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 09:18:54 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:33:18 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ void	go_get_cy(char **chop, t_vars *parser)
 	obj->type = CYLINDER;
 	obj->obj = cy;
 	ft_lstadd_front(&parser->obj_list, ft_lstnew(obj));
-
-	// t_list *lst;
-	// lst = parser->obj_list;
-	// printf(BCYN"cy center == [%f], [%f], [%f]\n"RESET, cy->center.x, cy->center.y, cy->center.z);
-	// printf(BGRN"cy normal == [%f], [%f], [%f]\n"RESET, cy->direction.x, cy->direction.y, cy->direction.z);
-	// printf(BMAG"cy color == [%d], [%d], [%d]\n"RESET, (cy->color & (255 << 16)) >> 16, (cy->color & (255 << 8)) >> 8, cy->color & 255);
-	// printf(BYEL"cy raduis height == [%f], [%f]\n"RESET, cy->radius, cy->height);
-
 	erase_split(split);
 }
 
@@ -63,14 +55,6 @@ void	go_get_pl(char **chop, t_vars *parser)
 	obj->type = PLANE;
 	obj->obj = plane;
 	ft_lstadd_front(&parser->obj_list, ft_lstnew(obj));
-
-	// t_list *lst;
-	// lst = parser->obj_list;
-	// printf(BCYN"pl center == [%f], [%f], [%f]\n"RESET, plane->center.x, plane->center.y, plane->center.z);
-	// printf(BGRN"pl normal == [%f], [%f], [%f]\n"RESET, plane->normal.x, plane->normal.y, plane->normal.z);
-	// printf(BMAG"pl color == [%d], [%d], [%d]\n"RESET, (plane->color & (255 << 16)) >> 16, (plane->color & (255 << 8)) >> 8, plane->color & 255);
-	// printf("---------------------------------------\n");
-
 	erase_split(split);
 }
 
@@ -91,13 +75,5 @@ void	go_get_sp(char **chop, t_vars *parser)
 	obj->type = SPHERE;
 	obj->obj = sphere;
 	ft_lstadd_front(&parser->obj_list, ft_lstnew(obj));
-
-	// t_list *lst;
-	// lst = parser->obj_list;
-	// printf(BCYN"sp x == [%f], sp y == [%f], sp z == [%f]\n"RESET, sphere->center.x, sphere->center.y, sphere->center.z);
-	// printf(BGRN"sp raduis == [%f]\n"RESET, sphere->radius);
-	// printf(BMAG"sp color == [%d], [%d], [%d]\n"RESET, (sphere->color & (255 << 16)) >> 16, (sphere->color & (255 << 8)) >> 8, sphere->color & 255);
-	// printf("---------------------------------------\n");
-
 	erase_split(split);
 }

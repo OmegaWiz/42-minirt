@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:08:00 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 01:15:06 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:31:44 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	util_ori(char **origin)
 			error(BYEL"not decimal or digit"RESET);
 		i++;
 	}
-	// printf(BCYN"ori num ok\n"RESET); //del
 }
 
 void	util_fov(char *fov)
@@ -44,7 +43,6 @@ void	util_fov(char *fov)
 		else if (str_is_decimal(fov) == 0)
 			error(BYEL"not number");
 	}
-	// printf(BCYN"fov num ok\n"RESET); //del
 }
 
 void	util_ratio(char **ratio, int index)
@@ -73,5 +71,4 @@ void	util_color(char **color, int len)
 		}
 		i++;
 	}
-	// printf(BCYN"color ok\n"RESET); //del
 }

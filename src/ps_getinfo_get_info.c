@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_getinfo_get_info.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 15:21:59 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 20:14:50 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:34:19 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	get_line(char *line, t_vars *parser)
 {
 	char	**chop;
 
-	printf("\ninfo: %s", line);
 	chop = split_blank(line);
 	if (chop == NULL)
 		return ;
@@ -43,22 +42,15 @@ void	get_line(char *line, t_vars *parser)
 void	get_info(t_vars *parser, char *av)
 {
 	int			fd;
-	// int			i;
 	char		*line;
-	// static int	cnt;
 
-	// i = 0;
 	fd = open(av, O_RDONLY);
 	line = get_next_line(fd);
-	// cnt = ft_splitcntt(line);
-	while (line != NULL )//&& i < cnt)
+	while (line != NULL )
 	{
 		get_line(line, parser);
 		free(line);
-		// i++;
 		line = get_next_line(fd);
-		// cnt = ft_splitcntt(line);
-		// i = 0;
 	}
 	free(line);
 	close(fd);

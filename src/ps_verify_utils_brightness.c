@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_verify_utils_brightness.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 04:19:50 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 14:19:01 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:32:00 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ void	util_ratio_light(char **brightness)
 	}
 	else
 		error(BYEL"brightness not correct"RESET);
-	printf(BCYN"brightness ok next\n"RESET); //del
 }
