@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:08:48 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/28 10:00:30 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:47:40 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	erase_split(char **av)
 {
-	// while (*av)
-	// 	free(*av++);
-	// free (av);
 	int	i;
 
 	i = 0;
@@ -28,7 +25,6 @@ void	erase_split(char **av)
 		i++;
 	}
 	free(av);
-	// printf("erase_split done :)\n");
 }
 
 void	free_error(char *s, char **free)

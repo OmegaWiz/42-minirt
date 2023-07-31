@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 09:37:01 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 14:20:54 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:55:50 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2)
 	return (0);
 }
 
-t_plane		*translate_plane(void *obj, t_point ori_pt, t_vec3 ori_vec)
+t_plane	*translate_plane(void *obj, t_point ori_pt, t_vec3 ori_vec)
 {
-	t_plane		*plane;
+	t_plane	*plane;
 
 	plane = (t_plane *) obj;
 	plane->center = point_add(plane->center, point_neg(ori_pt));

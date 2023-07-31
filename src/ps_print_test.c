@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:56:49 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 04:32:48 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:40:23 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	print_ambi(t_vars *parser)
 	printf(BBLU"parser->ambient.brightness == %f\n"RESET, \
 	parser->ambient.brightness);
 	printf(BRED"parser->ambient.color = %d, %d, %d\n"RESET, \
-	parser->ambient.color >> 16, parser->ambient.color >> 8, parser->ambient.color);
+	parser->ambient.color >> 16, parser->ambient.color >> 8, \
+	parser->ambient.color);
 	printf("========================================\n");
 }
 

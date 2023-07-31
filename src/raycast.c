@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:20:37 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/28 16:54:52 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:57:02 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ t_ray	get_ray(t_vec2 p, t_vars *vars)
 	t_vec2	pp;
 	t_vec3	cam_fru[3];
 
-	pp.x = (p.x / (double) WIN_WIDTH * 2.0 - 1.0) * ((double) WIN_WIDTH / (double) WIN_HEIGHT);
+	pp.x = (p.x / (double) WIN_WIDTH * 2.0 - 1.0) * \
+	((double) WIN_WIDTH / (double) WIN_HEIGHT);
 	pp.y = (p.y / (double) WIN_HEIGHT * 2.0 - 1.0) * -1.0;
 	ray.origin = vars->camera.origin;
 	cam_fru[0] = vec3_normalize(vars->camera.direction);

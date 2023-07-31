@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersect_cylinder.c                               :+:      :+:    :+:   */
+/*   obj_cylinder_intersect.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:15:22 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/12 20:15:18by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:46:25 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	intersect_cylinder_body(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2)
 	if (m < -0.0002f || m > cylinder->height)
 		return (0);
 	ray2->origin = point_translate(ray1->origin, ray1->direction, t);
-	ray2->direction = vec3_normalize(point_sub(ray2->origin, point_translate(bottom_center,
-					cylinder->direction, m)));
+	ray2->direction = vec3_normalize(point_sub(ray2->origin, \
+	point_translate(bottom_center, cylinder->direction, m)));
 	return (1);
 }

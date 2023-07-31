@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 22:56:46 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 04:33:50 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:43:40 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	go_get_c(char **chop, t_vars *parser)
 
 void	go_get_a(char **chop, t_vars *parser)
 {
-	t_ambient	*ambi
 	char		**split;
+	t_ambient	*ambi;
 
 	ambi = malloc(sizeof(t_ambient));
 	split = ft_split(chop[2], ',');

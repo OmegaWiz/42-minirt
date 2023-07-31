@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 19:57:47 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:39:15 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_shadow(t_ray hit_ray, t_vars *vars)
 	t_ray	shadow_ray;
 	t_ray	tmp;
 	t_list	*lst;
-	int	is_shadow;
+	int		is_shadow;
 
 	shadow_ray.origin = point_translate(hit_ray.origin,
 			hit_ray.direction, 1e-4);

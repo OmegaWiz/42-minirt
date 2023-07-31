@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:36:47 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 04:33:18 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 04:40:37 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	go_get_cy(char **chop, t_vars *parser)
 void	go_get_pl(char **chop, t_vars *parser)
 {
 	t_plane	*plane;
-	t_obj		*obj;
+	t_obj	*obj;
 	char	**split;
 
 	obj = malloc(sizeof(t_obj));
