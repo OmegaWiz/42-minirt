@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_getinfo_get_info.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 15:21:59 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 15:01:20 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:51:05 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	get_line(char *line, t_vars *parser)
 	else if (chop[0][0] == 'c' && chop[0][1] == 'y')
 		go_get_cy(chop, parser);
 	else if (chop[0][0] == 'c' && chop[0][1] == 'o')
-		go_get_cy(chop, parser);
+		go_get_co(chop, parser);
 	erase_split(chop);
 }
 

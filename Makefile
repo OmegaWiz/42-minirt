@@ -6,7 +6,7 @@
 #    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 08:16:18 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/07/28 09:28:17 by kkaiyawo         ###   ########.fr        #
+#    Updated: 2023/08/01 15:47:11 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ MLX_DIR			=	${LIB_DIR}mlx
 SRC_FILE		=	color.c draw.c file.c hook.c init.c intersect.c minirt.c\
 					obj_camera.c obj_cylinder_intersect.c obj_cylinder.c\
 					obj_plane.c obj_sphere.c raycast.c raytrace.c shade.c\
-					shadow.c translate.c\
+					shadow.c translate.c obj_cone.c\
 					ps_error.c ps_getinfo_go_get.c ps_getinfo_utils_get.c \
 					ps_verify_i_c_comment.c ps_verify_utils_brightness.c\
 					ps_verify_utils_resolution_1.c ps_verify_verify_1.c\
@@ -91,6 +91,6 @@ firetruckclean:
 re:				fclean all
 
 test:			all
-					./${NAME} files/test.rt
+					./${NAME} files/wrong.rt
 
 .PHONY:			all library clean fclean re
