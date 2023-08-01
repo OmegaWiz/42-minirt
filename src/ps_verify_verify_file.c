@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_verify_verify_file.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 04:30:51 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 11:28:21 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void	goinfile(int fd)
 		i = 0;
 	}
 	if (!(cnt_a == 1 || cnt_a == 0))
-		error(BRED"ambi should be 0 or 1"RESET);
+		error(BRED"invalid number of ambience"RESET);
 	else if (cnt_c != 1)
-		error(BRED"camera only 1"RESET);
+		error(BRED"invalid number of camera"RESET);
 }
 
 void	verify_file(char **av)
