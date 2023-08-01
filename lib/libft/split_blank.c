@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_blank.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:45:08 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 13:09:33 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:27:13 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_splitcntt(char const *s)
 		while (s[j] == 32 && s[j])
 			j++;
 		if (((s[i] == 32 || !s[i]))
-				&& (s[i - 1] != 32 
+			&& (s[i - 1] != 32
 				&& i - j > 0))
 		{
 			k++;
@@ -84,7 +84,7 @@ char	**split_blank(char const *s)
 		while (ft_isspace(s[ij[1]]) && s[ij[1]])
 			ij[1]++;
 		if ((s[ij[0]] == 32 || !s[ij[0]])
-				&& (s[ij[0] - 1] != 32 ) && ij[0] - ij[1] > 0)
+			&& (s[ij[0] - 1] != 32) && ij[0] - ij[1] > 0)
 		{
 			arr[len++] = ft_newsplitt(s, &ij[0], &ij[1]);
 			if (!arr[len - 1])

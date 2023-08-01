@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 15:21:59 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 16:21:27 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:21:53 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	get_info(t_vars *parser, char *av)
 
 	fd = open(av, O_RDONLY);
 	line = get_next_line(fd);
-	while (line != NULL )
+	while (line != NULL)
 	{
 		get_line(line, parser);
 		free(line);

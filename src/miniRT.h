@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/08/01 18:01:12 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:14:55 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,7 @@ int			cam_init(t_vars *vars);
 int			close_x(void *param);
 int			key_hook(int keycode, void *param);
 int			do_none(void *data);
+void		del_obj(void *ptr);
 
 // init.c
 void		vars_init(t_vars *vars);

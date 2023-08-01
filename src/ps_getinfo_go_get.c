@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 22:56:46 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 16:34:26 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:22:53 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ void	go_get_l(char **chop, t_vars *parser)
 	t_light	*light;
 	char	**split;
 
-	light = malloc(sizeof(t_light));
+	light = &parser->light;
 	split = ft_split(chop[1], ',');
 	get_point(split, &light->origin);
 	get_decimal(chop[2], &light->brightness);
 	erase_split(split);
-	parser->light = *light;
 	parser->light.color = color2int(255, 255, 255);
 }
 
@@ -31,7 +30,7 @@ void	go_get_c(char **chop, t_vars *parser)
 	t_camera	*camera;
 	char		**split;
 
-	camera = malloc(sizeof(t_camera));
+	camera = &parser->camera;
 	split = ft_split(chop[1], ',');
 	get_point(split, &camera->origin);
 	erase_split(split);
@@ -40,7 +39,6 @@ void	go_get_c(char **chop, t_vars *parser)
 	camera->direction = vec3_normalize(camera->direction);
 	get_decimal(chop[3], &camera->fov);
 	erase_split(split);
-	parser->camera = *camera;
 }
 
 void	go_get_a(char **chop, t_vars *parser)
@@ -48,10 +46,9 @@ void	go_get_a(char **chop, t_vars *parser)
 	char		**split;
 	t_ambient	*ambi;
 
-	ambi = malloc(sizeof(t_ambient));
+	ambi = &parser->ambient;
 	split = ft_split(chop[2], ',');
 	get_decimal(chop[1], &ambi->brightness);
 	get_color(split, &ambi->color);
 	erase_split(split);
-	parser->ambient = *ambi;
 }

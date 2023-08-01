@@ -6,7 +6,7 @@
 #    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 09:04:03 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/08/01 17:58:10 by kkaiyawo         ###   ########.fr        #
+#    Updated: 2023/08/01 18:09:54 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJS		= ${SRCS:.c=.o}
 
 CC			= gcc
 
-CFLAGS		= -g -Wall -Wextra -Werror -O3 -fsanitize=address
+CFLAGS		= -g -Wall -Wextra -Werror -O3 #-fsanitize=address
 
 RM			= rm -f
 
