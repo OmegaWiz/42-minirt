@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_cylinder_intersect.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:15:22 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/08/01 04:46:25 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 10:49:53 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,33 +52,31 @@ int	intersect_cylinder_bot(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2)
 	return (0);
 }
 
-int	intersect_cylinder_body(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2)
+int	intersect_cylinder_body(t_cylinder *cy, t_ray *ray1, t_ray *ray2)
 {
 	t_vec3		oc;
 	t_point		abc;
-	t_point		bottom_center;
-	double		t;
-	double		m;
+	t_point		bot_cen;
+	double		tm[2];
 
-	bottom_center = point_translate(cylinder->center,
-			cylinder->direction, cylinder->height / -2.0f);
-	oc = point_sub(ray1->origin, bottom_center);
+	bot_cen = point_translate(cy->center, cy->direction, cy->height / -2.0f);
+	oc = point_sub(ray1->origin, bot_cen);
 	abc.x = vec3_dot(ray1->direction, ray1->direction)
-		- pow(vec3_dot(ray1->direction, cylinder->direction), 2);
+		- pow(vec3_dot(ray1->direction, cy->direction), 2);
 	abc.y = 2.0f * (vec3_dot(oc, ray1->direction)
-			- vec3_dot(ray1->direction, cylinder->direction)
-			* vec3_dot(oc, cylinder->direction));
-	abc.z = vec3_dot(oc, oc) - pow(vec3_dot(oc, cylinder->direction), 2)
-		- cylinder->radius * cylinder->radius;
-	t = solve_quadratic(abc.x, abc.y, abc.z);
-	if (t < 0.0f)
+			- vec3_dot(ray1->direction, cy->direction)
+			* vec3_dot(oc, cy->direction));
+	abc.z = vec3_dot(oc, oc) - pow(vec3_dot(oc, cy->direction), 2)
+		- cy->radius * cy->radius;
+	tm[0] = solve_quadratic(abc.x, abc.y, abc.z);
+	if (tm[0] < 0.0f)
 		return (0);
-	m = vec3_dot(ray1->direction, cylinder->direction) * t
-		+ vec3_dot(oc, cylinder->direction);
-	if (m < -0.0002f || m > cylinder->height)
+	tm[1] = vec3_dot(ray1->direction, cy->direction) * tm[0]
+		+ vec3_dot(oc, cy->direction);
+	if (tm[1] < -0.0002f || tm[1] > cy->height)
 		return (0);
-	ray2->origin = point_translate(ray1->origin, ray1->direction, t);
+	ray2->origin = point_translate(ray1->origin, ray1->direction, tm[0]);
 	ray2->direction = vec3_normalize(point_sub(ray2->origin, \
-	point_translate(bottom_center, cylinder->direction, m)));
+	point_translate(bot_cen, cy->direction, tm[1])));
 	return (1);
 }

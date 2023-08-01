@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_blank.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:45:08 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 05:00:47 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 10:58:31 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_splitcntt(char const *s)
 	{
 		while ((s[j] == 32 || (s[j] >= 9 && s[j] <= 13)) && s[j])
 			j++;
-		if ((((s[i] == 32 || (s[i] >= 9 && s[i] <= 13) || !s[i])) 
+		if ((((s[i] == 32 || (s[i] >= 9 && s[i] <= 13) || !s[i]))
 				&& (s[i - 1] != 32 || ((s[i - 1] >= 9 && s[i - 1] <= 13)))
 				&& i - j > 0))
 		{
@@ -71,23 +71,23 @@ char	**split_blank(char const *s)
 {
 	char	**arr;
 	int		len;
-	int		i;
-	int		j;
+	int		ij[2];
 
 	if (s == NULL)
 		return (NULL);
 	arr = (char **)malloc((ft_splitcntt(s) + 1) * sizeof (char *));
 	if (!arr)
 		return (NULL);
-	ft_zeroo(&i, &j, &len);
-	while (++i <= (int) ft_strlen(s))
+	ft_zeroo(&ij[0], &ij[1], &len);
+	while (++ij[0] <= (int) ft_strlen(s))
 	{
-		while (ft_isspace(s[j]) && s[j])
-			j++;
-		if (((s[i] == 32 || (s[i] >= 9 && s[i] <= 13) || !s[i])
-				&& (s[i - 1] != 32 || (s[i - 1] >= 9 && s[i - 1] <= 13))) && i - j > 0)
+		while (ft_isspace(s[ij[1]]) && s[ij[1]])
+			ij[1]++;
+		if (((s[ij[0]] == 32 || (s[ij[0]] >= 9 && s[ij[0]] <= 13) || !s[ij[0]])
+				&& (s[ij[0] - 1] != 32 || (s[ij[0] - 1] >= 9 && s[ij[0] - 1]
+						<= 13))) && ij[0] - ij[1] > 0)
 		{
-			arr[len++] = ft_newsplitt(s, &i, &j);
+			arr[len++] = ft_newsplitt(s, &ij[0], &ij[1]);
 			if (!arr[len - 1])
 				return (ft_cleararrr(arr, len));
 		}

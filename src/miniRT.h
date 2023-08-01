@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/07/28 17:00:08 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 10:40:25 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,64 +139,63 @@ typedef struct s_color
 }	t_color;
 
 //error
-void	erase_split(char **av);
-void	free_error(char *s, char **free);
-void	error(char *s);
+void		erase_split(char **av);
+void		free_error(char *s, char **free);
+void		error(char *s);
 
-void	verify_file(char **av);
-void	verify_a(char **chop);
-void	verify_c(char **chop);
-void	verify_l(char **chop);
-void	verify_sp(char **chop);
-void	verify_pl(char **chop);
-void	verify_cy(char **chop);
-void	verify_len(char **line, int len);
-int		i_c_comment(char *line);
-int		empty_line(char *line);
+void		verify_file(char **av);
+void		verify_a(char **chop);
+void		verify_c(char **chop);
+void		verify_l(char **chop);
+void		verify_sp(char **chop);
+void		verify_pl(char **chop);
+void		verify_cy(char **chop);
+void		verify_len(char **line, int len);
+int			i_c_comment(char *line);
+int			empty_line(char *line);
 
 //utils_resolution_0
-void	util_ori(char **origin);
-void	util_dir(char *direction);
-void	util_fov(char *fov);
-void	util_ratio(char **ratio, int index);
-void	util_color(char **color, int len);
+void		util_ori(char **origin);
+void		util_dir(char *direction);
+void		util_fov(char *fov);
+void		util_ratio(char **ratio, int index);
+void		util_color(char **color, int len);
 
 //utils_resolution_1
-void	util_radius(char *radius);
-
+void		util_radius(char *radius);
 
 //utils_0
-int		twod_is_decimal(char **str);
-int		twod_is_digit(char **str);
-int		str_is_digit(char *str);
-int		str_is_decimal(char *str);
+int			twod_is_decimal(char **str);
+int			twod_is_digit(char **str);
+int			str_is_digit(char *str);
+int			str_is_decimal(char *str);
 
 //get_info
-void	get_info(t_vars *parser, char *av);
-void	get_line(char *line, t_vars *parser);
+void		get_info(t_vars *parser, char *av);
+void		get_line(char *line, t_vars *parser);
 
 //go_get
-void	go_get_a(char **chop, t_vars *parser);
-void	go_get_c(char **chop, t_vars *parser);
-void	go_get_l(char **chop, t_vars *parser);
-void	go_get_sp(char **chop, t_vars *parser);
-void	go_get_pl(char **chop, t_vars *parser);
-void	go_get_cy(char **chop, t_vars *parser);
+void		go_get_a(char **chop, t_vars *parser);
+void		go_get_c(char **chop, t_vars *parser);
+void		go_get_l(char **chop, t_vars *parser);
+void		go_get_sp(char **chop, t_vars *parser);
+void		go_get_pl(char **chop, t_vars *parser);
+void		go_get_cy(char **chop, t_vars *parser);
 
 //utils_get
-int		*get_digit(char *digit, int	*color);
-double	*get_decimal(char *dec, double *decimal);
-void	get_color(char **colour, int *color);
-void	get_point(char **xyz, t_point *pos);
-void	get_vec3(char **xyz, t_vec3 *pos);
+int			*get_digit(char *digit, int	*color);
+double		*get_decimal(char *dec, double *decimal);
+void		get_color(char **colour, int *color);
+void		get_point(char **xyz, t_point *pos);
+void		get_vec3(char **xyz, t_vec3 *pos);
 
 //print_test
-void	print_ambi(t_vars *parser);
-void	print_camera(t_vars *parser);
-void	print_light(t_vars *parser);
-void	print_sp(t_vars *parser);
-void	print_pl(t_vars *parser);
-void	print_cy(t_vars *parser);
+void		print_ambi(t_vars *parser);
+void		print_camera(t_vars *parser);
+void		print_light(t_vars *parser);
+void		print_sp(t_vars *parser);
+void		print_pl(t_vars *parser);
+void		print_cy(t_vars *parser);
 
 /*
 RENDERER
@@ -238,9 +237,12 @@ int			intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2);
 t_cylinder	*translate_cylinder(void *obj, t_point ori_pt, t_vec3 ori_vec);
 
 // obj_cylinder_intersect.c
-int			intersect_cylinder_top(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2);
-int			intersect_cylinder_bot(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2);
-int			intersect_cylinder_body(t_cylinder *cylinder, t_ray *ray1, t_ray *ray2);
+int			intersect_cylinder_top(t_cylinder *cylinder,
+				t_ray *ray1, t_ray *ray2);
+int			intersect_cylinder_bot(t_cylinder *cylinder,
+				t_ray *ray1, t_ray *ray2);
+int			intersect_cylinder_body(t_cylinder *cylinder,
+				t_ray *ray1, t_ray *ray2);
 
 // obj_plane.c
 int			intersect_plane(t_obj *obj, t_ray *ray1, t_ray *ray2);
