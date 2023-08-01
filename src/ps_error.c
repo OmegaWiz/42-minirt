@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:08:48 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 13:37:32 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:15:48 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,19 @@ void	free_error(char *s, char **free)
 void	error(char *s)
 {
 	ft_putendl_fd(BRED"Error"RESET, 2);
-	ft_putstr_fd(BRED"miniRT: "RESET, 2);
 	ft_putendl_fd(s, 2);
+	ft_putchar_fd('\n', 2);
+	ft_putendl_fd(BBLU"Usage:", 2);
+	ft_putendl_fd("./miniRT [file].rt"RESET, 2);
+	ft_putendl_fd(BGRN"[file].rt format:", 2);
+	ft_putendl_fd("{identifier} {parameter(s)} {line break}"RESET, 2);
+	ft_putendl_fd(BCYN"identifier:", 2);
+	ft_putendl_fd("A {ratio} {R,G,B}", 2);
+	ft_putendl_fd("C {origin} {normal} {FOV}", 2);
+	ft_putendl_fd("L {origin} {ratio}", 2);
+	ft_putendl_fd("sp {origin} {diameter} {R,G,B}", 2);
+	ft_putendl_fd("pl {origin} {normal} {R,G,B}", 2);
+	ft_putendl_fd("cy {origin} {normal} {diameter} {height} {R,G,B}", 2);
+	ft_putendl_fd("co {origin} {normal} {diameter} {height} {R,G,B}"RESET, 2);
 	exit(1);
 }
