@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/08/01 15:10:31 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:18:12 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ typedef struct s_color
 void		erase_split(char **av);
 void		free_error(char *s, char **free);
 void		error(char *s);
-void	error_a_c_l(int cnt_a, int cnt_c, int cnt_l);
+void		error_a_c_l(int cnt_a, int cnt_c, int cnt_l);
 
 void		verify_file(char **av);
 void		verify_a(char **chop);

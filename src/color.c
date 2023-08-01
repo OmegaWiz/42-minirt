@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 09:25:39 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/08/01 13:41:31 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:15:23 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	obj_color(t_obj *obj)
 		return (((t_plane *) obj->obj)->color);
 	else if (obj->type == CYLINDER)
 		return (((t_cylinder *) obj->obj)->color);
+	else if (obj->type == CONE)
+		return (((t_cone *) obj->obj)->color);
 	return (0);
 }
 

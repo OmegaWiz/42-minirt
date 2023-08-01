@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 09:37:23 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/08/01 15:52:42 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:17:45 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,31 @@ int	intersect_cone_bot(t_cone *cone, t_ray *ray1, t_ray *ray2)
 int	intersect_cone_body(t_cone *cone, t_ray *ray1, t_ray *ray2)
 {
 	t_vec3		oc;
+	t_vec3		dir;
 	t_point		bot_cen;
 	double		tmk[6];
 
-	bot_cen = point_translate(cone->center, cone->direction, cone->height / -2);
+	dir = vec3_neg(cone->direction);
+	bot_cen = point_translate(cone->center, dir, cone->height / -2);
 	tmk[5] = cone->radius / cone->height;
 	oc = point_sub(ray1->origin, bot_cen);
 	tmk[0] = vec3_dot(ray1->direction, ray1->direction) - (1 + tmk[5] * tmk[5])
-		* pow(vec3_dot(ray1->direction, cone->direction), 2);
-	tmk[1] = 2.0f * (vec3_dot(ray1->direction, oc)
-			- vec3_dot(ray1->direction, cone->direction)
-			* vec3_dot(oc, cone->direction) * (1 + tmk[5] * tmk[5]));
-	tmk[2] = vec3_dot(oc, oc) - (pow(vec3_dot(oc, cone->direction), 2)
+		* pow(vec3_dot(ray1->direction, dir), 2);
+	tmk[1] = 2.0f * (vec3_dot(ray1->direction, oc) - vec3_dot(ray1->direction,
+				dir) * vec3_dot(oc, dir) * (1 + tmk[5] * tmk[5]));
+	tmk[2] = vec3_dot(oc, oc) - (pow(vec3_dot(oc, dir), 2)
 			* (1 + tmk[5] * tmk[5]));
 	tmk[3] = solve_quadratic(tmk[0], tmk[1], tmk[2]);
 	if (tmk[3] < 0.0f)
 		return (0);
-	tmk[4] = vec3_dot(ray1->direction, cone->direction) * tmk[3]
-		+ vec3_dot(oc, cone->direction);
+	tmk[4] = vec3_dot(ray1->direction, dir) * tmk[3] + vec3_dot(oc, dir);
 	if (tmk[4] < -0.0002f || tmk[4] > cone->height)
 		return (0);
 	ray2->origin = point_translate(ray1->origin, ray1->direction, tmk[3]);
 	ray2->direction = vec3_normalize(point_sub(ray2->origin, point_translate(
-					bot_cen, cone->direction, tmk[4] * (1 + tmk[5] * tmk[5]))));
+					bot_cen, dir, tmk[4] * (1 + tmk[5] * tmk[5]))));
 	return (1);
 }
-
 
 int	intersect_cone(t_obj *obj, t_ray *ray1, t_ray *ray2)
 {
