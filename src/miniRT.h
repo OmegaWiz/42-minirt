@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/08/01 15:06:22 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:10:31 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ void		go_get_l(char **chop, t_vars *parser);
 void		go_get_sp(char **chop, t_vars *parser);
 void		go_get_pl(char **chop, t_vars *parser);
 void		go_get_cy(char **chop, t_vars *parser);
+void		go_get_co(char **chop, t_vars *parser);
 
 //utils_get
 int			*get_digit(char *digit, int	*color);

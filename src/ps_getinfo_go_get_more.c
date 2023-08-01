@@ -6,11 +6,35 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:36:47 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 04:40:37 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:10:09 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	go_get_co(char **chop, t_vars *parser)
+{
+	t_cone		*co;
+	t_obj		*obj;
+	char		**split;
+
+	obj = malloc(sizeof(t_obj));
+	co = malloc(sizeof(t_cone));
+	split = ft_split(chop[1], ',');
+	get_point(split, &co->center);
+	erase_split(split);
+	split = ft_split(chop[2], ',');
+	get_vec3(split, &co->direction);
+	erase_split(split);
+	get_decimal(chop[3], &co->radius);
+	get_decimal(chop[4], &co->height);
+	split = ft_split(chop[5], ',');
+	get_color(split, &co->color);
+	obj->type = CONE;
+	obj->obj = co;
+	ft_lstadd_front(&parser->obj_list, ft_lstnew(obj));
+	erase_split(split);
+}
 
 void	go_get_cy(char **chop, t_vars *parser)
 {

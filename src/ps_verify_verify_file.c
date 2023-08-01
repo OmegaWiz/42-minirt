@@ -6,7 +6,7 @@
 /*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 13:36:33 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:59:58 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	verify_line(char *line)
 	else if (ft_strncmp(chopchop[0], "pl", 3) == 0)
 		verify_pl(chopchop);
 	else if (ft_strncmp(chopchop[0], "cy", 3) == 0)
+		verify_cy(chopchop);
+	else if (ft_strncmp(chopchop[0], "co", 3) == 0)
 		verify_cy(chopchop);
 	else
 		error(BRED"invalid identifier"RESET);
