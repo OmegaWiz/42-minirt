@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/08/01 16:18:12 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:01:12 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ int			twod_is_decimal(char **str);
 int			twod_is_digit(char **str);
 int			str_is_digit(char *str);
 int			str_is_decimal(char *str);
+int			tuple_cnt(char *str, char c, int expect);
 
 //get_info
 void		get_info(t_vars *parser, char *av);

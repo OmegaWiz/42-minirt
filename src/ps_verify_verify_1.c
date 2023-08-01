@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_verify_verify_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:52:52 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 04:31:10 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:05:21 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	verify_c(char **chop)
 
 	i = 0;
 	verify_len(chop, 4);
+	tuple_cnt(chop[1], ',', 2);
+	tuple_cnt(chop[2], ',', 2);
 	ori = ft_split(chop[1], ',');
 	dir = ft_split(chop[2], ',');
 	util_ori(ori);
-	while (i != 3)
+	while (dir[i])
 	{
 		util_dir(dir[i]);
 		i++;
@@ -32,6 +34,8 @@ void	verify_c(char **chop)
 	util_fov(chop[3]);
 	erase_split(ori);
 	erase_split(dir);
+	if (i != 3)
+		error("Invalid camera direction\n");
 }
 
 void	verify_l(char **chop)
@@ -39,6 +43,7 @@ void	verify_l(char **chop)
 	char	**origin;
 
 	verify_len(chop, 3);
+	tuple_cnt(chop[1], ',', 2);
 	origin = ft_split(chop[1], ',');
 	util_ori(origin);
 	util_ratio(chop, 2);
@@ -50,6 +55,8 @@ void	verify_sp(char **chop)
 	char	**center;
 	char	**color;
 
+	tuple_cnt(chop[1], ',', 2);
+	tuple_cnt(chop[3], ',', 2);
 	center = ft_split(chop[1], ',');
 	color = ft_split(chop[3], ',');
 	verify_len(chop, 4);
@@ -68,6 +75,9 @@ void	verify_pl(char **chop)
 	int		i;
 
 	i = 0;
+	tuple_cnt(chop[1], ',', 2);
+	tuple_cnt(chop[2], ',', 2);
+	tuple_cnt(chop[3], ',', 2);
 	center = ft_split(chop[1], ',');
 	normal = ft_split(chop[2], ',');
 	color = ft_split(chop[3], ',');

@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 01:36:09 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/07/27 14:08:51 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:03:32 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	str_is_decimal(char *str)
 	}
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) || str[0] == '.')
+		if ((!ft_isdigit(str[i]) || str[0] == '.') && str[i] != '\n')
 			return (0);
 		i++;
 	}
@@ -72,10 +72,12 @@ int	twod_is_digit(char **str)
 			j++;
 		while (ft_isdigit(str[i][j]))
 			j++;
-		while (ft_isdigit(str[i][j]))
+		if (str[i][j] == '\n')
 			j++;
 		if (ft_strlen(str[i]) != j)
+		{
 			return (0);
+		}
 	}
 	return (1);
 }
@@ -93,5 +95,23 @@ int	str_is_digit(char *str)
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int	tuple_cnt(char *str, char c, int expect)
+{
+	int	i;
+	int	cnt;
+
+	i = 0;
+	cnt = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			cnt++;
+		i++;
+	}
+	if (cnt != expect)
+		error("Invalid tuple");
 	return (1);
 }

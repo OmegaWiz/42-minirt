@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_verify_utils_resolution_0.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:08:00 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 13:29:07 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:39:31 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	util_ori(char **origin)
 
 void	util_fov(char *fov)
 {
-	if (str_is_decimal(fov) == 1 || ((ft_atof(fov) > 180 || ft_atof(fov) < 0)))
+	if (str_is_decimal(fov) == 0 || ((ft_atof(fov) > 180 || ft_atof(fov) < 0)))
 	{
 		if (ft_atof(fov) < 0 || ft_atof(fov) > 180)
 			error(BYEL"only 0-180");
@@ -50,8 +50,10 @@ void	util_ratio(char **ratio, int index)
 	double	n;
 
 	n = ft_atof(ratio[index]);
-	if (!(n >= 0 && n <= 1.0))
+	if (!(n >= 0 && n <= 1.0) || str_is_decimal(ratio[index]) == 0)
+	{
 		free_error(BYEL"ratio not correct"RESET, ratio);
+	}
 }
 
 void	util_color(char **color, int len)
@@ -62,12 +64,11 @@ void	util_color(char **color, int len)
 	verify_len(color, len);
 	while (i < len)
 	{
-		if (twod_is_digit(color) == 1 || color[i][0] == '-' ||
+		if (twod_is_digit(color) == 0 || color[i][0] == '-' ||
 		ft_atoi(color[i]) > 255)
 		{
 			if (color[i][0] == '-' || ft_atoi(color[i]) > 255)
 				free_error(BYEL"color only 0-255"RESET, color);
-			printf("%s %d\n", color[i], i);
 			free_error(BYEL"color not correct"RESET, color);
 		}
 		i++;

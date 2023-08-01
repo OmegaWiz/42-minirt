@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:36:47 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 15:51:14 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:34:15 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	go_get_co(char **chop, t_vars *parser)
 	erase_split(split);
 	split = ft_split(chop[2], ',');
 	get_vec3(split, &co->direction);
+	co->direction = vec3_normalize(co->direction);
 	erase_split(split);
 	get_decimal(chop[3], &co->radius);
 	get_decimal(chop[4], &co->height);
@@ -49,6 +50,7 @@ void	go_get_cy(char **chop, t_vars *parser)
 	erase_split(split);
 	split = ft_split(chop[2], ',');
 	get_vec3(split, &cy->direction);
+	cy->direction = vec3_normalize(cy->direction);
 	erase_split(split);
 	get_decimal(chop[3], &cy->radius);
 	get_decimal(chop[4], &cy->height);
@@ -73,6 +75,7 @@ void	go_get_pl(char **chop, t_vars *parser)
 	erase_split(split);
 	split = ft_split(chop[2], ',');
 	get_vec3(split, &plane->normal);
+	plane->normal = vec3_normalize(plane->normal);
 	erase_split(split);
 	split = ft_split(chop[3], ',');
 	get_color(split, &plane->color);

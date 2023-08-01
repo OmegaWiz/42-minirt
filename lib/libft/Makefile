@@ -6,7 +6,7 @@
 #    By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/15 09:04:03 by kkaiyawo          #+#    #+#              #
-#    Updated: 2023/07/28 09:28:14 by kkaiyawo         ###   ########.fr        #
+#    Updated: 2023/08/01 17:58:10 by kkaiyawo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS		= ft_isalnum.c ft_isprint.c ft_memcmp.c ft_putchar_fd.c ft_split.c\
 			ft_calloc.c ft_isdigit.c ft_memchr.c ft_memset.c ft_putstr_fd.c\
 			ft_striteri.c ft_strlen.c ft_strrchr.c ft_toupper.c\
 			get_next_line.c get_next_line_utils.c split_blank.c ft_atof.c \
-			ft_isspace.c \
+			ft_isspace.c\
 			ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c\
 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\
 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
