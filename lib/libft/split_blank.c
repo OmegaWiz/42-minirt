@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_blank.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:45:08 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 10:58:31 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:09:33 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	ft_splitcntt(char const *s)
 	k = 0;
 	while (++i <= (int) ft_strlen(s))
 	{
-		while ((s[j] == 32 || (s[j] >= 9 && s[j] <= 13)) && s[j])
+		while (s[j] == 32 && s[j])
 			j++;
-		if ((((s[i] == 32 || (s[i] >= 9 && s[i] <= 13) || !s[i]))
-				&& (s[i - 1] != 32 || ((s[i - 1] >= 9 && s[i - 1] <= 13)))
+		if (((s[i] == 32 || !s[i]))
+				&& (s[i - 1] != 32 
 				&& i - j > 0))
 		{
 			k++;
@@ -83,9 +83,8 @@ char	**split_blank(char const *s)
 	{
 		while (ft_isspace(s[ij[1]]) && s[ij[1]])
 			ij[1]++;
-		if (((s[ij[0]] == 32 || (s[ij[0]] >= 9 && s[ij[0]] <= 13) || !s[ij[0]])
-				&& (s[ij[0] - 1] != 32 || (s[ij[0] - 1] >= 9 && s[ij[0] - 1]
-						<= 13))) && ij[0] - ij[1] > 0)
+		if ((s[ij[0]] == 32 || !s[ij[0]])
+				&& (s[ij[0] - 1] != 32 ) && ij[0] - ij[1] > 0)
 		{
 			arr[len++] = ft_newsplitt(s, &ij[0], &ij[1]);
 			if (!arr[len - 1])

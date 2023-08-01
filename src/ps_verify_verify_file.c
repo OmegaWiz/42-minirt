@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_verify_verify_file.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:13:19 by psaeyang          #+#    #+#             */
-/*   Updated: 2023/08/01 11:28:21 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:36:33 by psaeyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ void	verify_line(char *line)
 	erase_split(chopchop);
 }
 
-void	cnt_ambi_camera(char *line, int *cnt_a, int *cnt_c)
+void	cnt_ambi_camera(char *line, int *cnt_a, int *cnt_c, int *cnt_l)
 {
 	if (line[0] == 'A')
 		*cnt_a += 1;
 	else if (line[0] == 'C')
 		*cnt_c += 1;
+	else if (line[0] == 'L')
+		*cnt_l += 1;
 	else
 		return ;
 }
@@ -69,11 +71,13 @@ void	goinfile(int fd)
 	int			i;
 	int			cnt_a;
 	int			cnt_c;
+	int			cnt_l;
 	char		*gotline;
 
 	i = 0;
 	cnt_a = 0;
 	cnt_c = 0;
+	cnt_l = 0;
 	gotline = get_next_line(fd);
 	if (gotline == NULL)
 		error(BRED"empty file"RESET);
@@ -82,15 +86,12 @@ void	goinfile(int fd)
 		if (gotline[0] != '#')
 			verify_line(gotline);
 		i++;
-		cnt_ambi_camera(gotline, &cnt_a, &cnt_c);
+		cnt_ambi_camera(gotline, &cnt_a, &cnt_c, &cnt_l);
 		free(gotline);
 		gotline = get_next_line(fd);
 		i = 0;
 	}
-	if (!(cnt_a == 1 || cnt_a == 0))
-		error(BRED"invalid number of ambience"RESET);
-	else if (cnt_c != 1)
-		error(BRED"invalid number of camera"RESET);
+	error_a_c_l(cnt_a, cnt_c, cnt_l);
 }
 
 void	verify_file(char **av)
