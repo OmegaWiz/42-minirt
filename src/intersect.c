@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:04:20 by kkaiyawo          #+#    #+#             */
-/*   Updated: 2023/07/27 13:30:42 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:06:54 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	is_intersect(t_obj *obj, t_ray *ray1, t_ray *ray2)
 		return (intersect_cylinder(obj, ray1, ray2));
 	else if (obj->type == PLANE)
 		return (intersect_plane(obj, ray1, ray2));
+	else if (obj->type == CONE)
+		return (intersect_cone(obj, ray1, ray2));
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/08/01 14:16:55 by kkaiyawo         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:06:22 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef enum e_obj_type
 	SPHERE,
 	CYLINDER,
 	PLANE,
+	CONE,
 }	t_obj_type;
 
 typedef struct s_obj
@@ -241,6 +242,9 @@ double		solve_quadratic(double a, double b, double c);
 
 // obj_camera.c
 void		cam_translate(t_vars *vars);
+
+// obj_cone.c
+int			intersect_cone(t_obj *obj, t_ray *ray1, t_ray *ray2);
 
 // obj_cylinder.c
 int			intersect_cylinder(t_obj *obj, t_ray *ray1, t_ray *ray2);
