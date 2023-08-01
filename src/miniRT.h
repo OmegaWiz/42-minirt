@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaeyang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kkaiyawo <kkaiyawo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:59 by moonegg           #+#    #+#             */
-/*   Updated: 2023/08/01 13:37:12 by psaeyang         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:16:55 by kkaiyawo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,15 @@ typedef struct s_cylinder
 	double	height;
 	int		color;
 }	t_cylinder;
+
+typedef struct s_cone
+{
+	t_point	center;
+	t_vec3	direction;
+	double	radius;
+	double	height;
+	int		color;
+}	t_cone;
 
 typedef enum e_obj_type
 {
